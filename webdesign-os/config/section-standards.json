@@ -1,0 +1,125 @@
+{
+  "pageTypes": {
+    "home": {
+      "minimum": 5,
+      "recommended": 6,
+      "required": ["hero", "features|services", "social-proof", "cta"],
+      "suggested": ["stats", "process", "logos", "testimonials", "faq", "portfolio"]
+    },
+    "about": {
+      "minimum": 5,
+      "recommended": 5,
+      "required": ["hero", "story|mission", "team|values", "cta"],
+      "suggested": ["timeline", "stats", "partners", "certificates"]
+    },
+    "services": {
+      "minimum": 5,
+      "recommended": 6,
+      "required": ["hero", "services-overview", "process", "cta"],
+      "suggested": ["testimonials", "faq", "pricing", "comparison", "portfolio"]
+    },
+    "services-detail": {
+      "minimum": 5,
+      "recommended": 6,
+      "required": ["hero", "benefits", "process", "cta"],
+      "suggested": ["testimonials", "faq", "related-services", "case-study"]
+    },
+    "contact": {
+      "minimum": 4,
+      "recommended": 4,
+      "required": ["hero|header", "contact-form", "contact-info"],
+      "suggested": ["map", "faq", "team-contact"]
+    },
+    "landing": {
+      "minimum": 6,
+      "recommended": 7,
+      "required": ["hero", "problem", "solution", "features", "social-proof", "cta"],
+      "suggested": ["stats", "comparison", "faq", "pricing", "guarantee"]
+    },
+    "portfolio": {
+      "minimum": 4,
+      "recommended": 5,
+      "required": ["hero", "portfolio-grid", "cta"],
+      "suggested": ["testimonials", "process", "clients"]
+    },
+    "blog": {
+      "minimum": 3,
+      "recommended": 4,
+      "required": ["header", "posts-grid"],
+      "suggested": ["featured-post", "categories", "newsletter"]
+    },
+    "pricing": {
+      "minimum": 5,
+      "recommended": 6,
+      "required": ["hero", "pricing-tiers", "features-comparison", "cta"],
+      "suggested": ["faq", "testimonials", "guarantee"]
+    },
+    "team": {
+      "minimum": 4,
+      "recommended": 5,
+      "required": ["hero", "team-grid", "cta"],
+      "suggested": ["values", "culture", "careers"]
+    },
+    "default": {
+      "minimum": 4,
+      "recommended": 5,
+      "required": ["hero", "content", "cta"],
+      "suggested": []
+    }
+  },
+  "validation": {
+    "enforceMinimum": true,
+    "warnBelowRecommended": true,
+    "blockIfBelowMinimum": true
+  },
+  "sectionTypes": {
+    "hero": {
+      "description": "Above-the-fold introduction with headline, subheadline, CTA",
+      "variations": ["fullwidth", "split", "centered", "video", "minimal"]
+    },
+    "features": {
+      "description": "Key features or benefits in grid/list format",
+      "variations": ["grid", "bento", "alternating", "icons"]
+    },
+    "services": {
+      "description": "Service offerings overview",
+      "variations": ["cards", "list", "masonry"]
+    },
+    "testimonials": {
+      "description": "Customer reviews and social proof",
+      "variations": ["carousel", "grid", "single-quote", "video"]
+    },
+    "social-proof": {
+      "description": "Trust indicators (logos, stats, reviews)",
+      "variations": ["logos", "stats", "reviews", "combined"]
+    },
+    "stats": {
+      "description": "Key metrics and numbers",
+      "variations": ["horizontal", "grid", "animated-counters"]
+    },
+    "process": {
+      "description": "Step-by-step workflow or methodology",
+      "variations": ["horizontal", "vertical", "numbered", "timeline"]
+    },
+    "faq": {
+      "description": "Frequently asked questions",
+      "variations": ["accordion", "grid", "split"]
+    },
+    "cta": {
+      "description": "Call-to-action section",
+      "variations": ["centered", "split", "gradient", "with-image"]
+    },
+    "team": {
+      "description": "Team member profiles",
+      "variations": ["grid", "carousel", "featured"]
+    },
+    "pricing": {
+      "description": "Pricing tiers and plans",
+      "variations": ["cards", "comparison-table", "toggle"]
+    },
+    "contact": {
+      "description": "Contact form and information",
+      "variations": ["split", "centered", "minimal"]
+    }
+  }
+}

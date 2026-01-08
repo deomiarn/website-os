@@ -1,0 +1,111 @@
+{
+  "minimumScore": 7,
+  "enforceMode": "strict",
+  "requiredDistinctiveElements": 3,
+  "categories": {
+    "inspirationAlignment": {
+      "weight": "high",
+      "required": true
+    },
+    "typographyDistinction": {
+      "weight": "high",
+      "required": true,
+      "bannedFonts": ["Inter", "Roboto", "Arial", "sans-serif", "ui-sans-serif", "system-ui", "Open Sans", "Lato"]
+    },
+    "colorIntentionality": {
+      "weight": "high",
+      "required": true,
+      "bannedPatterns": ["purple-blue-gradient-white", "generic-blue-primary"]
+    },
+    "spatialComposition": {
+      "weight": "high",
+      "required": true,
+      "minimumSectionPadding": "py-24"
+    },
+    "visualDetails": {
+      "weight": "medium",
+      "required": true,
+      "bannedPatterns": ["plain-white-background", "plain-gray-background"]
+    },
+    "animationStrategy": {
+      "weight": "medium",
+      "required": true
+    },
+    "antiGenericCheck": {
+      "weight": "critical",
+      "required": true
+    }
+  },
+  "bannedPatterns": [
+    {
+      "id": "plain-white-centered",
+      "description": "bg-white with centered content, no treatment",
+      "severity": "high"
+    },
+    {
+      "id": "generic-font-stack",
+      "description": "Inter/Roboto/Arial as display font",
+      "severity": "high"
+    },
+    {
+      "id": "purple-blue-gradient",
+      "description": "Overused AI gradient aesthetic",
+      "severity": "high"
+    },
+    {
+      "id": "cookie-cutter-cards",
+      "description": "Equal-sized cards in perfect grid without styling",
+      "severity": "medium"
+    },
+    {
+      "id": "generic-hero-split",
+      "description": "Left text, right image without distinctive styling",
+      "severity": "medium"
+    },
+    {
+      "id": "stock-photo-untreated",
+      "description": "Plain images without shadows, overlays, or styling",
+      "severity": "medium"
+    }
+  ],
+  "distinctiveElements": [
+    "unique-background-treatment",
+    "dramatic-typography-hierarchy",
+    "asymmetric-layout",
+    "creative-image-treatment",
+    "distinctive-color-palette",
+    "choreographed-animations",
+    "creative-hover-states",
+    "decorative-elements",
+    "overlapping-composition",
+    "creative-negative-space",
+    "gradient-mesh",
+    "noise-texture",
+    "blur-effects",
+    "layered-shadows"
+  ],
+  "checkpoints": {
+    "shape-pages": {
+      "when": "after-each-section",
+      "action": "block-if-fail"
+    },
+    "implement": {
+      "when": "after-each-section",
+      "action": "block-if-fail"
+    },
+    "validate": {
+      "when": "full-page",
+      "action": "report-and-warn"
+    },
+    "refine": {
+      "when": "changed-sections",
+      "action": "block-if-fail"
+    }
+  },
+  "scoring": {
+    "excellent": { "min": 9, "max": 10, "status": "EXCELLENT", "action": "proceed" },
+    "pass": { "min": 7, "max": 8.9, "status": "PASS", "action": "proceed" },
+    "warning": { "min": 5, "max": 6.9, "status": "WARNING", "action": "proceed-with-notes" },
+    "fail": { "min": 0, "max": 4.9, "status": "FAIL", "action": "must-redesign" }
+  }
+}

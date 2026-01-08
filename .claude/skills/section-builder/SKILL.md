@@ -317,8 +317,171 @@ Every section should have:
 }
 ```
 
+---
+
+## ⚠️ Visual Quality Requirements (KRITISCH)
+
+This section defines mandatory visual standards. Sections that don't meet these requirements will FAIL the Design Excellence check.
+
+### BANNED Patterns (Auto-Fail)
+
+These patterns result in automatic Design Excellence failure:
+
+| Pattern | Why It's Bad | Example |
+|---------|--------------|---------|
+| Plain white backgrounds | No atmosphere, generic | `<section className="bg-white">` |
+| Generic fonts as display | Looks like AI output | `font-family: Inter, Arial, sans-serif` |
+| Cramped spacing | Unprofessional | `py-8`, `py-12` on sections |
+| Equal card grids | Cookie-cutter look | `grid-cols-3` with identical cards |
+| Generic blue buttons | No brand identity | `bg-blue-600` |
+| Untreated images | Stock photo look | `<Image className="rounded-lg">` |
+
+### ❌ BAD: Generic Section (DO NOT DO THIS)
+
+```tsx
+// ❌ FAIL - This will fail Design Excellence
+<section className="py-12 bg-white">
+  <div className="container mx-auto text-center">
+    <h2 className="text-2xl font-semibold">Our Features</h2>
+    <p className="text-gray-600">Check out what we offer</p>
+    <div className="grid grid-cols-3 gap-4 mt-8">
+      <div className="p-4 border rounded-lg">
+        <h3 className="font-medium">Feature 1</h3>
+        <p className="text-sm text-gray-500">Description text</p>
+      </div>
+      {/* More identical cards */}
+    </div>
+  </div>
+</section>
+```
+
+**Why this fails:**
+- `py-12` - Too cramped, minimum is `py-24`
+- `bg-white` - Plain, no atmosphere
+- `text-2xl` - Not dramatic enough for headline
+- `font-semibold` - Generic weight
+- `grid-cols-3 gap-4` - Cookie-cutter grid
+- No background treatment
+- No visual hierarchy
+- No distinctive elements
+
+### ✅ GOOD: Distinctive Section (DO THIS)
+
+```tsx
+// ✅ PASS - This meets Design Excellence standards
+<section className="py-32 lg:py-48 relative overflow-hidden">
+  {/* Background treatment - atmosphere */}
+  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+  <div className="absolute top-20 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+
+  <Container>
+    {/* Section header with dramatic typography */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="max-w-3xl mb-20"
+    >
+      <span className="text-sm font-medium text-primary tracking-wider uppercase">
+        Why Choose Us
+      </span>
+      <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mt-4 tracking-tight">
+        Features that set us <span className="text-primary">apart</span>
+      </h2>
+      <p className="text-lg md:text-xl text-muted-foreground mt-6 max-w-2xl">
+        Description with proper hierarchy and breathing room.
+      </p>
+    </motion.div>
+
+    {/* Asymmetric grid with varied cards */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, i) => (
+        <motion.div
+          key={feature.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          className="group relative"
+        >
+          {/* Card with hover effect */}
+          <div className="relative p-8 rounded-2xl bg-card/50 backdrop-blur-sm border-0 shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+            {/* Gradient border on hover */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl opacity-0 group-hover:opacity-100 blur transition" />
+
+            <div className="relative">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <feature.icon className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </Container>
+</section>
+```
+
+**Why this passes:**
+- `py-32 lg:py-48` - Generous whitespace
+- Gradient background with blur shapes - atmosphere
+- `text-5xl lg:text-6xl` - Dramatic headline
+- `font-display` - Distinctive font
+- Staggered animations
+- Card hover effects with gradient border
+- Backdrop blur and shadow depth
+- Visual hierarchy (label → headline → description → features)
+
+### Required Visual Elements
+
+Every section MUST have at least 3 of these:
+
+| Element | Implementation |
+|---------|----------------|
+| Background treatment | Gradient, blur shapes, pattern, or distinctive solid color |
+| Dramatic typography | `text-4xl` minimum for headlines, distinctive font |
+| Generous spacing | `py-24` minimum, prefer `py-32` or more |
+| Visual hierarchy | Clear label → heading → body → content flow |
+| Animation | Entrance animations with stagger |
+| Hover states | Interactive feedback on cards/buttons |
+| Depth | Shadows, blur, overlapping elements |
+| Image treatment | Shadow, blur glow, overlay, or masking |
+
+### Typography Scale
+
+| Element | Mobile | Desktop | Notes |
+|---------|--------|---------|-------|
+| Section Label | text-sm | text-sm | Uppercase, tracking-wider, text-primary |
+| Section Headline | text-3xl | text-5xl/6xl | font-display, font-bold, tracking-tight |
+| Section Description | text-base | text-lg/xl | text-muted-foreground, max-w constraint |
+| Card Title | text-lg | text-xl | font-bold |
+| Card Description | text-sm | text-base | text-muted-foreground |
+
+### Spacing Scale
+
+| Element | Value | Tailwind |
+|---------|-------|----------|
+| Section padding (min) | 96px | py-24 |
+| Section padding (preferred) | 128px | py-32 |
+| Section padding (dramatic) | 192px | py-48 |
+| Content gap | 32-64px | gap-8 to gap-16 |
+| Card padding | 32px | p-8 |
+| Element spacing | 16-24px | space-y-4 to space-y-6 |
+
+---
+
 ## Quality Checklist
 
+**Visual Quality (Design Excellence):**
+- [ ] Background has atmosphere (not plain white/gray)
+- [ ] Typography is dramatic (4xl+ headlines, distinctive font)
+- [ ] Spacing is generous (py-24+ on sections)
+- [ ] Has 3+ distinctive visual elements
+- [ ] No banned patterns present
+
+**Technical Quality:**
 - [ ] Section has clear visual hierarchy
 - [ ] Content is readable at all breakpoints
 - [ ] Proper spacing between elements

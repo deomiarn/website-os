@@ -102,10 +102,51 @@ Prüfe ob diese Klassen vorhanden sind:
 | Alt-Texte beschreibend | Nicht nur "image" |
 | Semantisches HTML | `<section>`, `<article>` verwendet |
 
+#### 2.7 Design Excellence Check (KRITISCH)
+
+**Dies ist die WICHTIGSTE Validierung!** Eine technisch korrekte aber visuell generische Section ist NICHT akzeptabel.
+
+**Lade den `design-excellence` Skill für detaillierte Scoring-Kriterien.**
+
+##### 7 Kategorien bewerten (je 0-10):
+
+| Kategorie | Prüfkriterien | Minimum |
+|-----------|---------------|---------|
+| **Inspiration Alignment** | Explizite Referenz zu Inspiration-Bild? 3+ Elemente übernommen? | 7/10 |
+| **Typography Distinction** | Distinctive Font (nicht Inter/Roboto)? text-4xl+ für Headlines? | 7/10 |
+| **Color Intentionality** | Dominant + Accent klar? Nicht gleichverteilt? | 7/10 |
+| **Spatial Composition** | py-24+ Sections? Asymmetrie/Layering? | 7/10 |
+| **Visual Details** | Background Treatment? Nicht plain white/gray? | 7/10 |
+| **Animation Strategy** | Staggered entrances? Hover states? | 7/10 |
+| **Anti-Generic Check** | 3+ distinctive elements? Würde auf Dribbble passen? | 7/10 |
+
+##### BANNED Patterns (Auto-Fail):
+
+| Pattern | Detection |
+|---------|-----------|
+| Plain white centered | `bg-white` + `text-center` ohne Treatment |
+| Generic font stack | Inter/Roboto/Arial als Display |
+| Purple-blue gradient | AI Klischee |
+| Cookie-cutter cards | `grid-cols-3` mit identischen Cards |
+| Cramped spacing | `py-8`, `py-12` auf Sections |
+| Untreated images | `<Image className="rounded-lg">` only |
+
+##### Scoring:
+
+| Score | Status | Aktion |
+|-------|--------|--------|
+| 9-10 | EXCELLENT | Portfolio-Qualität |
+| 7-8 | PASS | Weiter |
+| 5-6 | WARNING | Kann weiter mit Notizen |
+| 0-4 | **FAIL** | **MUSS REDESIGNEN** |
+
+**WICHTIG:** Durchschnitt aller 7 Kategorien muss >= 7 sein!
+
 ### 3. Report generieren
 
 "**Validation Report: {SectionName}**
 
+#### Technical Checks
 | Check | Status | Details |
 |-------|--------|---------|
 | TypeScript | {status} | {errorCount} errors |
@@ -115,14 +156,33 @@ Prüfe ob diese Klassen vorhanden sind:
 | Animation | {status} | {perfStatus} |
 | SEO | {status} | {seoStatus} |
 
+#### Design Excellence Score (KRITISCH)
+
+| Kategorie | Score | Notizen |
+|-----------|-------|---------|
+| Inspiration Alignment | ?/10 | {referenziert welches Bild?} |
+| Typography Distinction | ?/10 | {Font, Größen} |
+| Color Intentionality | ?/10 | {Dominant/Accent Strategie} |
+| Spatial Composition | ?/10 | {Spacing, Layout} |
+| Visual Details | ?/10 | {Background, Atmosphere} |
+| Animation Strategy | ?/10 | {Animation Types} |
+| Anti-Generic Check | ?/10 | {Distinctive Elements} |
+| **GESAMT** | **?/10** | **{PASS/FAIL}** |
+
+**3 Distinctive Elements:**
+1. {element}
+2. {element}
+3. {element}
+
 **Issues gefunden:**
 {list of issues with file:line references}
 
 **Empfehlungen:**
 {actionable fixes}
 
-**Gesamtstatus:** {overall status}
+**Gesamtstatus:** {overall status} | Design Score: {score}/10
 
+{if Design Score < 7} → **⚠️ DESIGN EXCELLENCE FAIL - MUSS REDESIGNEN!**
 {if fail} → **Bitte Issues fixen bevor du zur nächsten Section gehst.**
 {if pass} → **Bereit für nächste Section!**"
 
@@ -170,7 +230,9 @@ Für schnelle Iteration während der Entwicklung.
 
 ## Skills
 
-Nutze: `component-validator`
+**KRITISCH:**
+- `design-excellence` ← 7-Category Scoring System
+- `component-validator` ← Technical Validation Checks
 
 ## Output
 

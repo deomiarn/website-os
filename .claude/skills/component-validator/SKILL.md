@@ -132,7 +132,88 @@ height: 0
 />
 ```
 
-### 6. SEO Validation (Per Section)
+### 6. Design Quality Validation (KRITISCH)
+
+**This is the most important validation!** A technically correct but visually generic section FAILS.
+
+#### 6.1 Background Check
+
+| Status | Pattern | Example |
+|--------|---------|---------|
+| ❌ FAIL | Plain white | `<section className="bg-white">` |
+| ❌ FAIL | Plain gray | `<section className="bg-gray-50">` |
+| ✅ PASS | Gradient mesh | `bg-gradient-to-br from-primary/5 via-background to-accent/5` |
+| ✅ PASS | Blur shapes | `absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl` |
+| ✅ PASS | Distinctive solid | `bg-[#F2F0E9]` (from inspiration palette) |
+| ✅ PASS | Pattern/texture | Noise overlay, geometric patterns |
+
+#### 6.2 Typography Hierarchy Check
+
+| Status | Issue | Example |
+|--------|-------|---------|
+| ❌ FAIL | Flat hierarchy | Headlines all `text-2xl` |
+| ❌ FAIL | Generic fonts | `font-sans` or Inter as display |
+| ❌ FAIL | Small headlines | `text-xl` or `text-2xl` for section headlines |
+| ✅ PASS | 3+ distinct sizes | label(sm) → headline(5xl+) → body(lg) → caption(sm) |
+| ✅ PASS | Distinctive display font | `font-display` with Playfair/Fraunces/DM Serif |
+| ✅ PASS | Dramatic headlines | `text-4xl md:text-5xl lg:text-6xl` or larger |
+
+**Minimum Typography Scale:**
+```
+Section Headlines: text-4xl md:text-5xl lg:text-6xl (minimum)
+Card Headlines: text-xl (minimum)
+Body Text: text-base md:text-lg
+```
+
+#### 6.3 Spacing Check
+
+| Status | Spacing | Context |
+|--------|---------|---------|
+| ❌ FAIL | `py-8` | Section padding |
+| ❌ FAIL | `py-12` | Section padding |
+| ⚠️ WARNING | `py-16` | Acceptable for small sections |
+| ✅ PASS | `py-24` | Minimum section padding |
+| ✅ PASS | `py-32` | Preferred section padding |
+| ✅ PASS | `py-48` | Dramatic sections |
+
+#### 6.4 Visual Elements Check
+
+Count distinctive visual elements (need 3+ per section):
+
+| Element | Example | Count? |
+|---------|---------|--------|
+| Background gradient | `bg-gradient-to-br from-primary/5 to-accent/5` | ✓ |
+| Blur shapes | Decorative blur circles | ✓ |
+| Image treatment | Shadow, glow, overlay | ✓ |
+| Hover effects | Card lift, gradient border | ✓ |
+| Animations | Staggered entrance | ✓ |
+| Asymmetric layout | `grid-cols-[1fr,1.5fr]` | ✓ |
+| Dramatic typography | 6xl+ with distinctive font | ✓ |
+| Decorative elements | Shapes, lines, patterns | ✓ |
+
+#### 6.5 Banned Pattern Check
+
+Automatic FAIL if any of these are detected:
+
+| Pattern | Detection |
+|---------|-----------|
+| Plain white centered | `bg-white` + `text-center` + no background treatment |
+| Generic font stack | `Inter`, `Roboto`, `Arial` as primary display |
+| Purple-blue gradient | `from-purple-*` `to-blue-*` on white background |
+| Cookie-cutter cards | `grid-cols-3` with identical unstyled cards |
+| Generic hero split | Text left, image right with no distinctive styling |
+| Untreated images | `<Image className="rounded-lg">` only |
+
+#### 6.6 Inspiration Alignment Check
+
+| Question | Scoring |
+|----------|---------|
+| Does this section reference a specific inspiration? | Required |
+| Are 3+ elements borrowed from that inspiration? | Required |
+| Does the mood/atmosphere match? | Required |
+| Would this fit on Dribbble/Behance? | Required |
+
+### 7. SEO Validation (Per Section)
 
 | Check | Requirement |
 |-------|-------------|
@@ -148,6 +229,7 @@ After validation, report:
 ```
 ## Validation Report: {SectionName}
 
+### Technical Checks
 | Check | Status | Issues |
 |-------|--------|--------|
 | TypeScript | ✓ | 0 errors |
@@ -157,14 +239,43 @@ After validation, report:
 | Animation | ✓ | 60fps, GPU-accelerated |
 | SEO | ✓ | H2 with keyword |
 
+### Design Quality Checks (KRITISCH)
+| Check | Status | Details |
+|-------|--------|---------|
+| Background | ✓ | Gradient mesh with blur shapes |
+| Typography | ✓ | Fraunces display, text-6xl headline |
+| Spacing | ✓ | py-32, generous whitespace |
+| Visual Elements | ✓ | 4 distinctive elements found |
+| Banned Patterns | ✓ | None detected |
+| Inspiration Ref | ✓ | Matches bild1.png (Armonia) |
+
+### Design Excellence Score
+| Category | Score |
+|----------|-------|
+| Inspiration Alignment | 9/10 |
+| Typography Distinction | 8/10 |
+| Color Intentionality | 9/10 |
+| Spatial Composition | 8/10 |
+| Visual Details | 8/10 |
+| Animation Strategy | 7/10 |
+| Anti-Generic Check | 9/10 |
+| **TOTAL** | **8.3/10** |
+
+### 3 Distinctive Elements:
+1. Warm cream background (#F2F0E9)
+2. Asymmetric grid layout (1fr, 1.5fr)
+3. Dramatic 7xl serif headline with blur glow image treatment
+
 ### Issues Found:
 1. [A11Y] Image missing alt text at line 45
 
 ### Recommendations:
 - Add descriptive alt text to hero image
 
-### Status: ⚠️ Minor issues - fix before proceeding
+### Status: ✓ PASS (Score: 8.3/10, Minimum: 7)
 ```
+
+**IMPORTANT:** If Design Excellence Score < 7, the section FAILS regardless of technical checks!
 
 ## Status Levels
 

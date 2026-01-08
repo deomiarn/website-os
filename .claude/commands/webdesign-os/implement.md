@@ -22,6 +22,34 @@ Implementiere die Website Page by Page mit Custom Sections und Validierung.
 
 Prüfe dass Step 5 (Write Spec) abgeschlossen ist.
 
+---
+
+## ⚠️ KRITISCHE SKILL-ANFORDERUNGEN
+
+### PFLICHT: Skills laden BEVOR du implementierst!
+
+```
+Skill: frontend-design       ← KRITISCH für Design-Qualität
+Skill: design-excellence     ← KRITISCH für Validation
+Skill: section-builder       ← Für visuelle Standards
+Skill: animation-library     ← Für Animationen
+```
+
+**WARUM:** Ohne diese Skills wird generischer, amateurhafter Code produziert.
+Die Skills enthalten die Design-Philosophie und Quality-Standards die EINGEHALTEN werden MÜSSEN.
+
+### Design-Philosophie Erinnerung (aus frontend-design):
+
+| Prinzip | VERBOTEN | ERFORDERLICH |
+|---------|----------|--------------|
+| Typography | Inter, Roboto, Arial | Distinctive fonts (Playfair, Fraunces, DM Serif) |
+| Colors | Gleichverteilung, generic blue | Dominant + Accent Strategie |
+| Spacing | py-8, py-12 | py-24 minimum, py-32 bevorzugt |
+| Backgrounds | Plain white/gray | Gradient mesh, noise, blur shapes |
+| Layout | Alles zentriert | Asymmetrie, Layering, visuelle Hierarchie |
+
+---
+
 ## Anweisung
 
 Du führst jetzt den **Implement** Workflow durch - **Page by Page mit Custom Sections**.
@@ -38,7 +66,41 @@ Lese:
 - `webdesign-os/config/pages.json` - Seiten mit Design-Details und SEO
 - `webdesign-os/specs/{projekt}/` - Spezifikationen
 - `webdesign-os/config/design-tokens.json` - Design System
-- `webdesign-os/config/inspiration-analysis.json` - Analysierte Inspirationen
+- `webdesign-os/config/inspiration-analysis.json` - **KRITISCH** Analysierte Inspirationen
+- `webdesign-os/config/section-standards.json` - Section Minimums pro Seitentyp
+
+### 1.5 Inspiration-Guidelines extrahieren und ANZEIGEN
+
+**PFLICHT:** Zeige dem User die extrahierten Design-Richtlinien:
+
+"**📸 Aktive Inspirationen für dieses Projekt:**
+
+| Inspiration | Stil | Farbpalette | Typography |
+|-------------|------|-------------|------------|
+| {name1} | {stil} | {farben} | {fonts} |
+| {name2} | {stil} | {farben} | {fonts} |
+
+**Design-Richtlinien (aus Inspirationen abgeleitet):**
+
+- **Dominant Color:** {dominant aus Analyse}
+- **Accent Color:** {accent aus Analyse}
+- **Display Font:** {font-display aus Analyse}
+- **Atmosphere:** {mood aus Analyse}
+- **Layout-Stil:** {layout aus Analyse}
+
+Diese Richtlinien werden bei JEDER Section angewendet!"
+
+### 1.6 Section-Minimum validieren
+
+**PFLICHT:** Prüfe ob die geplanten Sections das Minimum erfüllen:
+
+```
+Seitentyp: {pageType}
+Minimum Sections: {minimum aus section-standards.json}
+Geplante Sections: {anzahl}
+
+{Falls geplant < minimum: "⚠️ BLOCKIERT - Mindestens {minimum} Sections erforderlich!"}
+```
 
 ### 2. Projekt-Setup (einmalig)
 
@@ -137,23 +199,169 @@ Laut Spec werden diese Custom Sections benötigt:
 
 Los geht's?"
 
-#### 4.2 Section für Section (Custom Build + Validation)
+#### 4.2 Section für Section (5-Step Quality Process)
 
-Für jede Section:
+**⚠️ KRITISCH: Für JEDE Section den 5-Step Process durchlaufen!**
 
-1. **Erstelle Custom Component** nach Spec
-2. **Integriere User Code** falls vorhanden
-3. **Wende Design Tokens an**
-4. **Füge Animationen hinzu**
-5. **Validiere** (Checkpoint!)
+---
 
-"**Section 1/6: Hero (Custom)**
+##### 🔷 STEP 1: Inspiration Reference
 
-**Design-Basis:**
-- Inspiration: `inspirations/sections/hero/hero1.png`
-- User Code: Ja (wird integriert)
+"**Section: {name} - Inspiration Check**
 
-**Erstelle Custom Component:**
+**Welche Inspiration passt zu dieser Section?**
+- Datei: `{inspiration-filename}`
+- Mood: {mood aus Analyse}
+- Key Elements: {elements die übernommen werden}
+
+**Aus dieser Inspiration übernehme ich:**
+1. {element1 - z.B. "Asymmetrisches Grid-Layout"}
+2. {element2 - z.B. "Warme Beige-Töne als Hintergrund"}
+3. {element3 - z.B. "Elegante Serif-Headlines"}"
+
+---
+
+##### 🔷 STEP 2: frontend-design Philosophie anwenden
+
+"**Design-Entscheidungen für {section}:**
+
+| Aspekt | Entscheidung | Warum |
+|--------|--------------|-------|
+| **Background** | {nicht plain white!} | {z.B. "Gradient mesh für Atmosphere"} |
+| **Typography** | {distinctive font} | {z.B. "Fraunces für Editorial-Feel wie Inspiration"} |
+| **Spacing** | py-{32/48} | {z.B. "Generous whitespace wie in Inspiration"} |
+| **Layout** | {asymmetric/layered} | {z.B. "Overlapping elements für Tiefe"} |
+| **Colors** | {dominant + accent} | {z.B. "Beige dominant, Dark green accent"} |
+
+**Distinctive Elements (mindestens 3):**
+1. {element1}
+2. {element2}
+3. {element3}"
+
+---
+
+##### 🔷 STEP 3: Code Implementation
+
+Jetzt erst Code schreiben - MIT allen Design-Entscheidungen:
+
+```tsx
+// components/sections/{SectionName}.tsx
+"use client"
+
+import { motion } from "framer-motion"
+// ... imports
+
+// GOOD: Atmospheric, distinctive
+export function {SectionName}() {
+  return (
+    <section className="py-32 lg:py-48 relative overflow-hidden">
+      {/* Background Treatment - NICHT plain white! */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="absolute top-20 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+
+      <Container>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Dramatic Typography - NICHT text-2xl! */}
+          <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight">
+            {/* ... */}
+          </h2>
+        </motion.div>
+      </Container>
+    </section>
+  )
+}
+```
+
+---
+
+##### 🔷 STEP 4: Design Excellence Validation
+
+**PFLICHT: Score >= 7 erforderlich um fortzufahren!**
+
+"**🎨 Design Excellence Check: {SectionName}**
+
+| Kategorie | Score | Notizen |
+|-----------|-------|---------|
+| Inspiration Alignment | ?/10 | {referenziert {file}?} |
+| Typography Distinction | ?/10 | {Font: {font}, keine generischen?} |
+| Color Intentionality | ?/10 | {Dominant + Accent klar?} |
+| Spatial Composition | ?/10 | {py-{x}, Asymmetrie?} |
+| Visual Details | ?/10 | {Background treatment?} |
+| Animation Strategy | ?/10 | {Staggered, hover states?} |
+| Anti-Generic Check | ?/10 | {3 distinctive elements?} |
+
+**Gesamt: ?/10**
+
+**3 Distinctive Elements:**
+1. {element}
+2. {element}
+3. {element}
+
+**Status: {PASS/FAIL}**"
+
+---
+
+##### 🔷 STEP 5: Proceed oder Redesign
+
+```
+IF Score >= 7:
+  ✓ PROCEED to next section
+ELSE:
+  ⚠️ REDESIGN REQUIRED
+
+  Issues to fix:
+  - {issue1}
+  - {issue2}
+
+  → Zurück zu STEP 2 mit Korrekturen
+```
+
+---
+
+**WICHTIG:** Diesen 5-Step Process für JEDE Section durchlaufen. Keine Abkürzungen!
+
+"**Beispiel: 5-Step Process für Hero Section**
+
+---
+
+**🔷 STEP 1: Inspiration Reference**
+
+Inspiration: `bild1.png` (Armonia Excursions)
+- Mood: Elegant, editorial, warm
+- Key Elements: Split layout, large imagery, serif headlines, warm beige
+
+Aus dieser Inspiration übernehme ich:
+1. Asymmetrisches Grid mit größerem Bild-Bereich
+2. Warme Beige/Cream Hintergrundfarbe (#F2F0E9)
+3. Elegante Serif-Headline (Fraunces)
+4. Generous whitespace (py-32+)
+
+---
+
+**🔷 STEP 2: Design-Entscheidungen**
+
+| Aspekt | Entscheidung | Warum |
+|--------|--------------|-------|
+| Background | bg-[#F2F0E9] warm cream | Wie Armonia Inspiration |
+| Typography | Fraunces for h1, text-5xl md:text-7xl | Dramatic serif wie Inspiration |
+| Spacing | py-32 lg:py-48 | Generous breathing room |
+| Layout | grid lg:grid-cols-[1fr,1.5fr] | Asymmetric, image dominant |
+| Colors | Cream dominant, Dark green (#2D3B2D) accent | Aus Inspiration palette |
+
+Distinctive Elements:
+1. Warm cream background (nicht plain white)
+2. Asymmetric grid layout
+3. Dramatic serif typography mit 7xl
+4. Image mit shadow + subtle border treatment
+
+---
+
+**🔷 STEP 3: Code Implementation**
 
 ```tsx
 // components/sections/HeroSection.tsx
@@ -163,23 +371,6 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/layout/container"
-
-interface HeroSectionProps {
-  headline: string
-  subheadline?: string
-  primaryCTA: {
-    label: string
-    href: string
-  }
-  secondaryCTA?: {
-    label: string
-    href: string
-  }
-  image: {
-    src: string
-    alt: string
-  }
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -206,54 +397,66 @@ export function HeroSection({
   image
 }: HeroSectionProps) {
   return (
-    <section className="py-section-md">
+    // GOOD: Distinctive background, generous spacing
+    <section className="py-32 lg:py-48 bg-[#F2F0E9] relative overflow-hidden">
+      {/* Subtle decorative element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent" />
+
       <Container>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* GOOD: Asymmetric grid */}
+        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-12 lg:gap-20 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-6"
+            className="space-y-8"
           >
+            {/* GOOD: Dramatic typography */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-4xl lg:text-5xl font-bold text-foreground"
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-[#2D3B2D] tracking-tight leading-[1.1]"
             >
               {headline}
             </motion.h1>
             {subheadline && (
               <motion.p
                 variants={itemVariants}
-                className="text-lg text-muted-foreground"
+                className="text-lg md:text-xl text-[#2D3B2D]/70 max-w-md"
               >
                 {subheadline}
               </motion.p>
             )}
-            <motion.div variants={itemVariants} className="flex gap-4">
-              <Button size="lg" asChild>
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
+              <Button size="lg" className="bg-[#2D3B2D] hover:bg-[#2D3B2D]/90 text-white" asChild>
                 <a href={primaryCTA.href}>{primaryCTA.label}</a>
               </Button>
               {secondaryCTA && (
-                <Button variant="ghost" size="lg" asChild>
+                <Button variant="ghost" size="lg" className="text-[#2D3B2D] hover:bg-[#2D3B2D]/10" asChild>
                   <a href={secondaryCTA.href}>{secondaryCTA.label}</a>
                 </Button>
               )}
             </motion.div>
           </motion.div>
+
+          {/* GOOD: Image with treatment */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative aspect-[4/3]"
+            className="relative"
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              priority
-              className="object-cover rounded-radius"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            {/* Decorative shadow/glow behind image */}
+            <div className="absolute -inset-4 bg-[#2D3B2D]/10 rounded-2xl blur-2xl" />
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 60vw"
+              />
+            </div>
           </motion.div>
         </div>
       </Container>
@@ -262,27 +465,29 @@ export function HeroSection({
 }
 ```
 
-**Implementiert:**
-- [x] Custom Component erstellt
-- [x] Inspiration berücksichtigt
-- [x] User Code integriert
-- [x] Design Tokens verwendet
-- [x] Framer Motion Animationen
-- [x] SEO Alt-Text gesetzt
-
 ---
 
-**🔍 Validation Checkpoint**
+**🔷 STEP 4: Design Excellence Check**
 
-| Check | Status |
-|-------|--------|
-| TypeScript | ✓ No errors |
-| Design Tokens | ✓ Using tokens |
-| Responsive | ✓ Grid + breakpoints |
-| Accessibility | ✓ Alt text set |
-| Animation | ✓ GPU-accelerated |
+| Kategorie | Score | Notizen |
+|-----------|-------|---------|
+| Inspiration Alignment | 9/10 | Explizit Armonia referenziert, Elemente übernommen |
+| Typography Distinction | 9/10 | Fraunces serif, text-7xl, dramatic |
+| Color Intentionality | 9/10 | Cream dominant, dark green accent |
+| Spatial Composition | 9/10 | py-32+, asymmetric grid, breathing room |
+| Visual Details | 8/10 | Gradient overlay, image glow, shadow |
+| Animation Strategy | 8/10 | Staggered entrance, scale on image |
+| Anti-Generic Check | 9/10 | 4 distinctive elements |
 
-**Status: ✓ Pass** → Weiter zu Section 2?"
+**Gesamt: 8.7/10**
+
+**3 Distinctive Elements:**
+1. Warm cream background (#F2F0E9) - nicht plain white
+2. Asymmetric grid (1fr, 1.5fr) - nicht 50/50
+3. Dramatic 7xl serif headline mit tight tracking
+4. Image mit blur glow treatment
+
+**Status: ✓ PASS** → Weiter zu Section 2"
 
 #### 4.3 Nächste Sections
 
@@ -521,7 +726,16 @@ Wenn User Code-Snippets bereitgestellt wurden:
 
 ## Skills
 
-Nutze: `nextjs-patterns`, `frontend-design`, `animation-library`, `responsive-patterns`, `component-validator`
+**KRITISCHE Skills (MÜSSEN geladen werden):**
+- `frontend-design` ← Design-Philosophie, Anti-Generic Patterns
+- `design-excellence` ← 7-Category Scoring, Quality Gates
+
+**Weitere Skills:**
+- `section-builder` ← Visual Quality Requirements
+- `animation-library` ← Animation Patterns
+- `responsive-patterns` ← Mobile-first Breakpoints
+- `component-validator` ← Technical Validation
+- `nextjs-patterns` ← Next.js Best Practices
 
 ## Output
 
