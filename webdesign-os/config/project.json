@@ -1,59 +1,194 @@
 {
   "$schema": "./schemas/project.schema.json",
   "version": "1.0.0",
-  "name": "",
+  "name": "Swiss Group Wealth Management",
   "brand": {
-    "name": "",
-    "tagline": "",
-    "industry": "",
-    "values": [],
+    "name": "Swiss Group Wealth Management AG",
+    "tagline": "Treffen Sie die richtigen Entscheidungen, zur richtigen Zeit.",
+    "industry": "Finanzdienstleistungen / Wealth Management",
+    "values": [
+      "Unabhängigkeit",
+      "Kundenzentrierung",
+      "Sicherheit",
+      "Transparenz",
+      "Ganzheitlichkeit"
+    ],
     "voice": {
-      "tone": "",
-      "personality": []
+      "tone": "professionell, vertrauenswürdig, kompetent",
+      "personality": [
+        "seriös",
+        "nahbar",
+        "lösungsorientiert",
+        "unabhängig"
+      ]
     }
   },
   "audience": {
-    "primary": "",
+    "primary": "Privatpersonen und KMU-Inhaber in der Schweiz",
     "demographics": {
-      "ageRange": "",
-      "location": "",
-      "profession": ""
+      "ageRange": "35-65",
+      "location": "Schweiz",
+      "profession": "Berufstätige, Unternehmer, Führungskräfte"
     },
-    "archetypes": [],
-    "problems": [],
-    "needs": [],
-    "goals": []
+    "archetypes": [
+      "Anspruchsvolle Privatpersonen vor Weichenstellungen",
+      "KMU-Inhaber mit komplexen Finanzfragen",
+      "Menschen mit Wunsch nach Transparenz und Unabhängigkeit"
+    ],
+    "problems": [
+      "Komplexität und Orientierungslosigkeit bei Finanzentscheidungen",
+      "Unsicherheit bei Grossentscheidungen (Eigenheim, Pensionierung)",
+      "Fehlende Nachfolgeregelung bei KMU",
+      "Kostendruck und Optimierungsbedarf",
+      "Mangel an Zeit und Expertise für Finanzthemen"
+    ],
+    "needs": [
+      "Expertise und Vertrauen",
+      "Konkrete Informationen zu Dienstleistungen",
+      "Massgeschneiderte Lösungen statt Standardprodukte",
+      "Einfacher Weg zur Kontaktaufnahme"
+    ],
+    "goals": [
+      "Finanzielle Sicherheit",
+      "Optimale Vorsorge",
+      "Erfolgreiche Nachfolge",
+      "Vermögensaufbau und -schutz"
+    ]
   },
-  "type": "",
-  "pages": [],
+  "type": "corporate-leadgen",
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "path": "/",
+      "purpose": "Vertrauensaufbau, Übersicht, Lead-Capture"
+    },
+    {
+      "id": "about",
+      "name": "Über uns",
+      "path": "/ueber-uns",
+      "purpose": "Team, Geschichte, Werte, Unabhängigkeit"
+    },
+    {
+      "id": "services",
+      "name": "Dienstleistungen",
+      "path": "/dienstleistungen",
+      "purpose": "Übersicht aller Services"
+    },
+    {
+      "id": "financial-planning",
+      "name": "Finanzplanung",
+      "path": "/dienstleistungen/finanzplanung",
+      "purpose": "Ganzheitliche Vermögensberatung"
+    },
+    {
+      "id": "pension",
+      "name": "Vorsorge & Pensionierung",
+      "path": "/dienstleistungen/vorsorge-pensionierung",
+      "purpose": "3-Säulen-System, Pensionierungsplanung"
+    },
+    {
+      "id": "insurance",
+      "name": "Versicherungen",
+      "path": "/dienstleistungen/versicherungen",
+      "purpose": "Krankenversicherung, Sachversicherungen"
+    },
+    {
+      "id": "real-estate",
+      "name": "Immobilien",
+      "path": "/dienstleistungen/immobilien",
+      "purpose": "Finanzierung, Hypotheken"
+    },
+    {
+      "id": "estate",
+      "name": "Nachlass & Erbschaft",
+      "path": "/dienstleistungen/nachlass-erbschaft",
+      "purpose": "Nachlassplanung, Testament"
+    },
+    {
+      "id": "kmu",
+      "name": "KMU-Services",
+      "path": "/dienstleistungen/kmu",
+      "purpose": "Firmengründung, Nachfolge, BVG"
+    },
+    {
+      "id": "contact",
+      "name": "Kontakt",
+      "path": "/kontakt",
+      "purpose": "Formular, Standort, Kontaktdaten"
+    },
+    {
+      "id": "booking",
+      "name": "Erstgespräch buchen",
+      "path": "/erstgespraech",
+      "purpose": "Cal.com Terminbuchung, Lead-Capture"
+    },
+    {
+      "id": "blog",
+      "name": "Blog / Ratgeber",
+      "path": "/ratgeber",
+      "purpose": "Fachartikel, SEO, Thought Leadership"
+    },
+    {
+      "id": "faq",
+      "name": "FAQ",
+      "path": "/faq",
+      "purpose": "Häufige Fragen, Vertrauensaufbau"
+    }
+  ],
   "features": {
-    "blog": false,
+    "blog": true,
     "commerce": false,
     "auth": false,
-    "contactForm": false,
+    "contactForm": true,
     "newsletter": false,
-    "analytics": false,
-    "darkMode": false
+    "analytics": true,
+    "darkMode": false,
+    "booking": true
   },
   "designPreferences": {
-    "style": "",
-    "colorPreferences": [],
-    "colorPalette": "",
+    "style": "modern-premium",
+    "colorPreferences": [
+      "modernisiertes Blau",
+      "frisch",
+      "zeitgemäss",
+      "warme Akzente"
+    ],
+    "colorPalette": "blue-modernized",
     "typography": {
-      "headings": "",
-      "body": ""
+      "headings": "elegant, premium",
+      "body": "lesbar, professionell"
     },
-    "characteristics": [],
-    "mood": "",
-    "inspirationAnalyzed": false,
+    "characteristics": [
+      "viel Weissraum",
+      "asymmetrische Layouts",
+      "Trust-Elemente",
+      "elegante Typografie",
+      "Premium-Ästhetik"
+    ],
+    "mood": "vertrauenswürdig, hochwertig, kompetent",
+    "inspirationAnalyzed": true,
     "inspirations": {
-      "general": [],
-      "sections": {}
+      "general": [
+        "inspirations/bild1.jpg",
+        "inspirations/bild2.jpg",
+        "inspirations/bild3.jpg",
+        "inspirations/hero1.png"
+      ],
+      "sections": {},
+      "analysis": {
+        "bild1": "Elegante, warme Ästhetik, asymmetrische Layouts, erdige Grün-/Beigetöne",
+        "bild2": "Premium Luxury-Stil, elegante Typografie, Gold-/Grüntöne",
+        "bild3": "Business/Corporate, helles Blau, Trust-Logos, Statistiken",
+        "hero1": "Dark & Luxurious, grosse Typografie, warme Erdtöne"
+      }
     }
   },
   "status": {
-    "currentPhase": "",
-    "completedPhases": [],
-    "lastUpdated": ""
+    "currentPhase": "init",
+    "completedPhases": [
+      "questionnaire"
+    ],
+    "lastUpdated": "2026-01-08T00:00:00.000Z"
   }
 }

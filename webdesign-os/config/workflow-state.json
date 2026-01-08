@@ -1,61 +1,102 @@
 {
   "$schema": "./schemas/workflow-state.schema.json",
   "version": "3.0.0",
-  "currentStep": 1,
+  "currentStep": 4,
   "steps": [
     {
       "id": 1,
       "name": "Init Project",
       "command": "/init-project",
-      "status": "pending",
-      "summary": null,
-      "completedAt": null,
-      "data": null
+      "status": "completed",
+      "summary": "Swiss Group Wealth Management AG - Corporate Website mit Lead-Generation. 13 Seiten, Blog (Sanity), Terminbuchung (Cal.com). Modern Premium Design mit modernisiertem Blau.",
+      "completedAt": "2026-01-08T00:00:00.000Z",
+      "data": {
+        "projectName": "Swiss Group Wealth Management",
+        "pageCount": 13,
+        "features": ["blog", "contactForm", "booking", "analytics"],
+        "designStyle": "modern-premium"
+      }
     },
     {
       "id": 2,
       "name": "Content Plan",
       "command": "/content-plan",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null,
-      "pages": [],
-      "data": null
+      "status": "completed",
+      "summary": "Content für alle 13 Seiten geplant. ~40 Features, ~15 Testimonials, ~45 FAQs, 5-8 Team-Mitglieder. Alle Bilder benötigen Placeholders. Komponenten-Empfehlungen für Design System erstellt.",
+      "completedAt": "2026-01-08T00:00:00.000Z",
+      "pages": ["home", "about", "services", "financial-planning", "pension", "insurance", "real-estate", "estate", "kmu", "contact", "booking", "blog", "faq"],
+      "data": {
+        "totalFeatures": 40,
+        "totalTestimonials": 15,
+        "totalFaqs": 45,
+        "teamMembers": 8,
+        "placeholdersNeeded": 35
+      }
     },
     {
       "id": 3,
       "name": "Design System",
       "command": "/design-system",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null,
-      "data": null
+      "status": "completed",
+      "summary": "Elegant Design System: Playfair Display + Source Sans Pro. Navy Primary, Gold Accent, Off-White Background. Subtle Border Radius (0.375rem), Subtle Animations. Basierend auf 4 Inspirations-Bildern.",
+      "completedAt": "2026-01-08T00:00:00.000Z",
+      "data": {
+        "typography": {
+          "display": "Playfair Display",
+          "body": "Source Sans Pro"
+        },
+        "colors": {
+          "primary": "oklch(0.35 0.08 250)",
+          "accent": "oklch(0.70 0.14 85)",
+          "background": "oklch(0.97 0.01 90)"
+        },
+        "style": {
+          "radius": "0.375rem",
+          "animations": "subtle"
+        },
+        "inspirationsAnalyzed": 4
+      }
     },
     {
       "id": 4,
       "name": "Shape Pages",
       "command": "/shape-pages",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null,
-      "pages": [],
-      "data": null
+      "status": "completed",
+      "summary": "13 Seiten Section-für-Section gestaltet. Home: Fullwidth Hero, Stats-Bar, Image Cards, Carousel Testimonials. Service-Pages: Bildbasierte Heroes, Gold-Checklists, Horizontal Process Steps. Masonry Grid für Dienstleistungen. Global: Sticky Header, Multi-Column Footer.",
+      "completedAt": "2026-01-08T00:00:00.000Z",
+      "pages": ["home", "about", "services", "financial-planning", "pension", "insurance", "real-estate", "estate", "kmu", "contact", "booking", "blog", "faq"],
+      "data": {
+        "totalSections": 52,
+        "globalComponents": ["header", "footer"],
+        "templates": ["service-page"],
+        "uniqueVariants": {
+          "hero": ["fullwidth-overlay", "text-focused", "minimal", "service-image", "booking-focused"],
+          "cards": ["image-cards", "masonry", "bento"],
+          "navigation": ["pill-tabs", "sticky-sidebar"]
+        }
+      }
     },
     {
       "id": 5,
       "name": "Write Spec",
       "command": "/write-spec",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null,
-      "pages": [],
-      "data": null
+      "status": "completed",
+      "summary": "13 Seiten vollständig spezifiziert. SEO-Keywords, Schema Markup, Heading-Struktur für alle Seiten. ~25 Custom Components definiert. Service-Template für 6 Unterseiten. Sanity Blog Schema, Cal.com Integration, Resend Forms.",
+      "completedAt": "2026-01-08T00:00:00.000Z",
+      "pages": ["home", "about", "services", "financial-planning", "pension", "insurance", "real-estate", "estate", "kmu", "contact", "booking", "blog", "faq"],
+      "data": {
+        "specDirectory": "webdesign-os/specs/2026-01-08-sgwm/",
+        "totalComponents": 25,
+        "seoComplete": true,
+        "schemaTypes": ["WebPage", "Organization", "LocalBusiness", "Service", "FAQPage", "Blog", "Article", "BreadcrumbList"],
+        "integrations": ["sanity", "cal.com", "resend", "google-maps"]
+      }
     },
     {
       "id": 6,
       "name": "Implement",
       "command": "/implement",
-      "status": "locked",
+      "status": "pending",
       "summary": null,
       "completedAt": null,
       "pages": [],
@@ -112,5 +153,36 @@
       "seo"
     ]
   },
-  "history": []
+  "history": [
+    {
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "step": 1,
+      "action": "completed",
+      "details": "Project initialized: Swiss Group Wealth Management AG"
+    },
+    {
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "step": 2,
+      "action": "completed",
+      "details": "Content planned for all 13 pages. Components recommended for Design System."
+    },
+    {
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "step": 3,
+      "action": "completed",
+      "details": "Design System created: Playfair Display + Source Sans Pro, Navy/Gold/Off-White palette, 4 inspirations analyzed."
+    },
+    {
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "step": 4,
+      "action": "completed",
+      "details": "Shape Pages completed: 13 pages with 52 sections designed. Fullwidth Heroes, Stats Bar, Masonry Grid, Carousel Testimonials. Service-Page Template created."
+    },
+    {
+      "timestamp": "2026-01-08T00:00:00.000Z",
+      "step": 5,
+      "action": "completed",
+      "details": "Write Spec completed: All 13 pages fully specified with SEO, components, responsive behavior, animations. ~25 custom components defined. Service template for 6 sub-pages."
+    }
+  ]
 }

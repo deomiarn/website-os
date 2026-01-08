@@ -2,93 +2,208 @@
   "$schema": "./schemas/design-tokens.schema.json",
   "version": "1.0.0",
   "meta": {
-    "name": "",
-    "description": "",
-    "createdAt": ""
+    "name": "Swiss Group Wealth Management Design System",
+    "description": "Elegant, professional design system for Finance/Wealth Management. Navy + Gold + Off-White palette with Playfair Display headings.",
+    "createdAt": "2026-01-08T00:00:00.000Z"
   },
   "colors": {
     "light": {
-      "background": "",
-      "foreground": "",
-      "card": "",
-      "cardForeground": "",
-      "popover": "",
-      "popoverForeground": "",
-      "primary": "",
-      "primaryForeground": "",
-      "secondary": "",
-      "secondaryForeground": "",
-      "accent": "",
-      "accentForeground": "",
-      "muted": "",
-      "mutedForeground": "",
-      "destructive": "",
-      "destructiveForeground": "",
-      "border": "",
-      "input": "",
-      "ring": ""
+      "background": "oklch(0.97 0.01 90)",
+      "foreground": "oklch(0.20 0.02 250)",
+      "card": "oklch(1 0 0)",
+      "cardForeground": "oklch(0.20 0.02 250)",
+      "popover": "oklch(1 0 0)",
+      "popoverForeground": "oklch(0.20 0.02 250)",
+      "primary": "oklch(0.35 0.08 250)",
+      "primaryForeground": "oklch(0.98 0 0)",
+      "secondary": "oklch(0.92 0.01 90)",
+      "secondaryForeground": "oklch(0.25 0.05 250)",
+      "accent": "oklch(0.70 0.14 85)",
+      "accentForeground": "oklch(0.20 0.02 85)",
+      "muted": "oklch(0.92 0.01 90)",
+      "mutedForeground": "oklch(0.55 0.02 250)",
+      "destructive": "oklch(0.55 0.22 25)",
+      "destructiveForeground": "oklch(0.98 0 0)",
+      "border": "oklch(0.88 0.01 90)",
+      "input": "oklch(0.88 0.01 90)",
+      "ring": "oklch(0.35 0.08 250)"
     },
     "dark": {
-      "background": "",
-      "foreground": "",
-      "card": "",
-      "cardForeground": "",
-      "popover": "",
-      "popoverForeground": "",
-      "primary": "",
-      "primaryForeground": "",
-      "secondary": "",
-      "secondaryForeground": "",
-      "accent": "",
-      "accentForeground": "",
-      "muted": "",
-      "mutedForeground": "",
-      "destructive": "",
-      "destructiveForeground": "",
-      "border": "",
-      "input": "",
-      "ring": ""
+      "background": "oklch(0.15 0.02 250)",
+      "foreground": "oklch(0.95 0.01 90)",
+      "card": "oklch(0.20 0.02 250)",
+      "cardForeground": "oklch(0.95 0.01 90)",
+      "popover": "oklch(0.20 0.02 250)",
+      "popoverForeground": "oklch(0.95 0.01 90)",
+      "primary": "oklch(0.70 0.14 85)",
+      "primaryForeground": "oklch(0.15 0.02 250)",
+      "secondary": "oklch(0.25 0.02 250)",
+      "secondaryForeground": "oklch(0.90 0.01 90)",
+      "accent": "oklch(0.55 0.12 250)",
+      "accentForeground": "oklch(0.95 0.01 90)",
+      "muted": "oklch(0.25 0.02 250)",
+      "mutedForeground": "oklch(0.60 0.02 250)",
+      "destructive": "oklch(0.55 0.22 25)",
+      "destructiveForeground": "oklch(0.98 0 0)",
+      "border": "oklch(0.30 0.02 250)",
+      "input": "oklch(0.30 0.02 250)",
+      "ring": "oklch(0.70 0.14 85)"
     },
     "semantic": {
-      "success": "",
-      "warning": "",
-      "info": ""
+      "success": "oklch(0.55 0.15 145)",
+      "warning": "oklch(0.70 0.15 70)",
+      "info": "oklch(0.55 0.12 250)"
     },
     "charts": {
-      "chart1": "",
-      "chart2": "",
-      "chart3": "",
-      "chart4": "",
-      "chart5": ""
+      "chart1": "oklch(0.35 0.08 250)",
+      "chart2": "oklch(0.70 0.14 85)",
+      "chart3": "oklch(0.55 0.15 145)",
+      "chart4": "oklch(0.60 0.12 200)",
+      "chart5": "oklch(0.50 0.10 300)"
     }
   },
   "typography": {
     "fontFamily": {
-      "display": "",
-      "body": "",
-      "mono": ""
+      "display": "'Playfair Display', Georgia, 'Times New Roman', serif",
+      "body": "'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "mono": "'JetBrains Mono', 'Fira Code', Consolas, monospace"
     },
     "fontUrls": {
-      "display": "",
-      "body": ""
+      "display": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap",
+      "body": "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
     },
-    "scale": {},
-    "lineHeight": {},
-    "letterSpacing": {},
-    "fontWeight": {}
+    "scale": {
+      "h1": "clamp(2.5rem, 5vw, 4rem)",
+      "h2": "clamp(2rem, 4vw, 3rem)",
+      "h3": "clamp(1.5rem, 3vw, 2rem)",
+      "h4": "clamp(1.25rem, 2vw, 1.5rem)",
+      "h5": "1.125rem",
+      "h6": "1rem",
+      "body": "1rem",
+      "bodyLarge": "1.125rem",
+      "bodySmall": "0.875rem",
+      "caption": "0.75rem"
+    },
+    "lineHeight": {
+      "tight": "1.1",
+      "snug": "1.25",
+      "normal": "1.5",
+      "relaxed": "1.625",
+      "loose": "2"
+    },
+    "letterSpacing": {
+      "tighter": "-0.05em",
+      "tight": "-0.025em",
+      "normal": "0",
+      "wide": "0.025em",
+      "wider": "0.05em",
+      "widest": "0.1em"
+    },
+    "fontWeight": {
+      "light": "300",
+      "normal": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    }
   },
   "spacing": {
-    "base": "",
-    "scale": {},
-    "section": {}
+    "base": "0.25rem",
+    "scale": {
+      "0": "0",
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "16": "4rem",
+      "20": "5rem",
+      "24": "6rem",
+      "32": "8rem",
+      "40": "10rem",
+      "48": "12rem",
+      "64": "16rem"
+    },
+    "section": {
+      "sm": "clamp(2rem, 5vw, 4rem)",
+      "md": "clamp(4rem, 8vw, 6rem)",
+      "lg": "clamp(6rem, 10vw, 8rem)"
+    }
   },
-  "radius": {},
-  "shadows": {},
+  "radius": {
+    "none": "0",
+    "sm": "0.25rem",
+    "md": "0.375rem",
+    "lg": "0.5rem",
+    "xl": "0.75rem",
+    "2xl": "1rem",
+    "3xl": "1.5rem",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 oklch(0.20 0.02 250 / 0.05)",
+    "md": "0 4px 6px -1px oklch(0.20 0.02 250 / 0.07), 0 2px 4px -2px oklch(0.20 0.02 250 / 0.05)",
+    "lg": "0 10px 15px -3px oklch(0.20 0.02 250 / 0.08), 0 4px 6px -4px oklch(0.20 0.02 250 / 0.05)",
+    "xl": "0 20px 25px -5px oklch(0.20 0.02 250 / 0.08), 0 8px 10px -6px oklch(0.20 0.02 250 / 0.05)",
+    "2xl": "0 25px 50px -12px oklch(0.20 0.02 250 / 0.15)",
+    "inner": "inset 0 2px 4px 0 oklch(0.20 0.02 250 / 0.05)",
+    "none": "none"
+  },
   "animations": {
-    "duration": {},
-    "easing": {},
-    "keyframes": {}
+    "duration": {
+      "fast": "150ms",
+      "normal": "250ms",
+      "slow": "400ms",
+      "slower": "600ms"
+    },
+    "easing": {
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "in": "cubic-bezier(0.4, 0, 1, 1)",
+      "out": "cubic-bezier(0, 0, 0.2, 1)",
+      "inOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "bounce": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    },
+    "keyframes": {
+      "fadeIn": {
+        "from": { "opacity": "0" },
+        "to": { "opacity": "1" }
+      },
+      "fadeInUp": {
+        "from": { "opacity": "0", "transform": "translateY(10px)" },
+        "to": { "opacity": "1", "transform": "translateY(0)" }
+      },
+      "slideInRight": {
+        "from": { "opacity": "0", "transform": "translateX(20px)" },
+        "to": { "opacity": "1", "transform": "translateX(0)" }
+      }
+    }
   },
-  "breakpoints": {},
-  "container": {}
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "container": {
+    "center": true,
+    "padding": {
+      "DEFAULT": "1rem",
+      "sm": "1.5rem",
+      "lg": "2rem",
+      "xl": "2.5rem",
+      "2xl": "3rem"
+    },
+    "maxWidth": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1400px"
+    }
+  }
 }

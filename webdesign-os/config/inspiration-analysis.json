@@ -1,31 +1,141 @@
 {
   "$schema": "./schemas/inspiration-analysis.schema.json",
   "version": "1.0.0",
-  "analyzedAt": null,
-  "totalImages": 0,
-  "images": [],
+  "analyzedAt": "2026-01-08T00:00:00.000Z",
+  "totalImages": 4,
+  "images": [
+    {
+      "id": "bild1",
+      "filename": "bild1.jpg",
+      "source": "ui.poly.volt",
+      "type": "travel-agency-website",
+      "colors": {
+        "primary": "oklch(0.45 0.08 140)",
+        "primaryName": "Sage Green / Olive",
+        "background": "oklch(0.95 0.02 90)",
+        "backgroundName": "Warm Beige",
+        "accent": "oklch(0.35 0.06 140)",
+        "accentName": "Dark Olive"
+      },
+      "typography": {
+        "headings": "Sans-serif, bold, uppercase tracking",
+        "body": "Sans-serif, regular",
+        "style": "Clean, modern"
+      },
+      "layout": {
+        "grid": "Asymmetric, offset images",
+        "spacing": "Generous whitespace",
+        "alignment": "Mixed"
+      },
+      "mood": "Elegant, warm, premium",
+      "applicableElements": ["layout", "whitespace", "warm-tones"]
+    },
+    {
+      "id": "bild2",
+      "filename": "bild2.jpg",
+      "source": "@katyvboo",
+      "type": "luxury-hotel-website",
+      "colors": {
+        "primary": "oklch(0.45 0.10 140)",
+        "primaryName": "Olive Green",
+        "background": "oklch(0.93 0.03 85)",
+        "backgroundName": "Cream",
+        "accent": "oklch(0.70 0.12 85)",
+        "accentName": "Gold"
+      },
+      "typography": {
+        "headings": "Elegant script + Serif",
+        "body": "Serif, classic",
+        "style": "Luxurious, sophisticated"
+      },
+      "layout": {
+        "grid": "Card-based sections",
+        "spacing": "Medium whitespace",
+        "alignment": "Centered headings"
+      },
+      "mood": "Luxury, warmth, exclusivity",
+      "applicableElements": ["gold-accent", "luxury-feel", "serif-typography"]
+    },
+    {
+      "id": "bild3",
+      "filename": "bild3.jpg",
+      "source": "unknown",
+      "type": "business-real-estate-website",
+      "colors": {
+        "primary": "oklch(0.55 0.12 230)",
+        "primaryName": "Light Blue",
+        "background": "oklch(0.97 0.01 230)",
+        "backgroundName": "Light Blue-Gray",
+        "accent": "oklch(0.45 0.15 230)",
+        "accentName": "Medium Blue"
+      },
+      "typography": {
+        "headings": "Sans-serif, bold",
+        "body": "Sans-serif, regular",
+        "style": "Corporate, professional"
+      },
+      "layout": {
+        "grid": "Structured grid, cards",
+        "spacing": "Moderate whitespace",
+        "alignment": "Left-aligned"
+      },
+      "mood": "Professional, trustworthy, corporate",
+      "applicableElements": ["statistics", "trust-logos", "process-steps", "corporate-structure"]
+    },
+    {
+      "id": "hero1",
+      "filename": "hero1.png",
+      "source": "souvaena",
+      "type": "luxury-interiors-hero",
+      "colors": {
+        "primary": "oklch(0.40 0.06 60)",
+        "primaryName": "Taupe",
+        "background": "oklch(0.30 0.04 60)",
+        "backgroundName": "Dark Warm Gray",
+        "accent": "oklch(0.90 0.02 90)",
+        "accentName": "Off-White"
+      },
+      "typography": {
+        "headings": "Large serif, elegant",
+        "body": "Small caps, tracking",
+        "style": "Statement, luxury"
+      },
+      "layout": {
+        "grid": "Full-width hero",
+        "spacing": "Minimal padding",
+        "alignment": "Centered overlay"
+      },
+      "mood": "Luxurious, sophisticated, statement",
+      "applicableElements": ["large-typography", "premium-imagery"]
+    }
+  ],
   "synthesis": {
     "colorPalette": {
-      "recommended": "",
-      "base": "",
-      "primary": "",
-      "accent": "",
-      "rationale": ""
+      "recommended": "Navy + Gold + Off-White",
+      "base": "oklch(0.97 0.01 90)",
+      "primary": "oklch(0.35 0.08 250)",
+      "accent": "oklch(0.70 0.14 85)",
+      "rationale": "Navy from Finance industry standards, Gold from bild2 luxury feel, Off-White from bild1/bild2 warm backgrounds"
     },
     "typography": {
-      "headings": "",
-      "body": "",
-      "rationale": ""
+      "headings": "Playfair Display (elegant serif)",
+      "body": "Source Sans Pro (clean sans-serif)",
+      "rationale": "Serif headings provide luxury feel from bild2, sans-serif body ensures readability like bild3"
     },
     "layout": {
-      "whitespace": "",
-      "sections": "",
-      "images": "",
-      "rationale": ""
+      "whitespace": "Generous, premium feel",
+      "sections": "Card-based with asymmetric accents",
+      "images": "High-quality, warm tones, professional",
+      "rationale": "Combines bild1 whitespace, bild2/bild3 card layouts, bild3 trust elements"
     },
     "overall": {
-      "mood": "",
-      "avoidances": []
+      "mood": "Professional luxury - trustworthy yet premium",
+      "avoidances": [
+        "Overly playful elements",
+        "Cold/sterile corporate feel",
+        "Cluttered layouts",
+        "Bright/saturated colors"
+      ]
     }
   }
 }
