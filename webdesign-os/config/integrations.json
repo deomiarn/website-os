@@ -1,0 +1,57 @@
+{
+  "$schema": "./schemas/integrations.schema.json",
+  "version": "1.0.0",
+  "blog": {
+    "enabled": false,
+    "provider": "sanity",
+    "config": {
+      "projectId": "",
+      "dataset": "production",
+      "apiVersion": "2024-01-01"
+    }
+  },
+  "commerce": {
+    "enabled": false,
+    "provider": "medusa",
+    "config": {
+      "backendUrl": "",
+      "publishableKey": ""
+    }
+  },
+  "auth": {
+    "enabled": false,
+    "provider": "supabase",
+    "config": {
+      "url": "",
+      "anonKey": ""
+    }
+  },
+  "payments": {
+    "enabled": false,
+    "provider": "stripe",
+    "config": {
+      "publishableKey": ""
+    }
+  },
+  "hosting": {
+    "provider": "vercel",
+    "config": {
+      "projectId": "",
+      "teamId": ""
+    }
+  },
+  "forms": {
+    "enabled": true,
+    "provider": "resend",
+    "config": {
+      "apiKey": "",
+      "fromEmail": "",
+      "toEmail": ""
+    }
+  },
+  "newsletter": {
+    "enabled": false,
+    "provider": "",
+    "config": {}
+  }
+}

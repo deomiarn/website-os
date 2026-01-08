@@ -1,0 +1,31 @@
+{
+  "$schema": "./schemas/inspiration-analysis.schema.json",
+  "version": "1.0.0",
+  "analyzedAt": null,
+  "totalImages": 0,
+  "images": [],
+  "synthesis": {
+    "colorPalette": {
+      "recommended": "",
+      "base": "",
+      "primary": "",
+      "accent": "",
+      "rationale": ""
+    },
+    "typography": {
+      "headings": "",
+      "body": "",
+      "rationale": ""
+    },
+    "layout": {
+      "whitespace": "",
+      "sections": "",
+      "images": "",
+      "rationale": ""
+    },
+    "overall": {
+      "mood": "",
+      "avoidances": []
+    }
+  }
+}

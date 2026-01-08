@@ -1,0 +1,59 @@
+{
+  "$schema": "./schemas/project.schema.json",
+  "version": "1.0.0",
+  "name": "",
+  "brand": {
+    "name": "",
+    "tagline": "",
+    "industry": "",
+    "values": [],
+    "voice": {
+      "tone": "",
+      "personality": []
+    }
+  },
+  "audience": {
+    "primary": "",
+    "demographics": {
+      "ageRange": "",
+      "location": "",
+      "profession": ""
+    },
+    "archetypes": [],
+    "problems": [],
+    "needs": [],
+    "goals": []
+  },
+  "type": "",
+  "pages": [],
+  "features": {
+    "blog": false,
+    "commerce": false,
+    "auth": false,
+    "contactForm": false,
+    "newsletter": false,
+    "analytics": false,
+    "darkMode": false
+  },
+  "designPreferences": {
+    "style": "",
+    "colorPreferences": [],
+    "colorPalette": "",
+    "typography": {
+      "headings": "",
+      "body": ""
+    },
+    "characteristics": [],
+    "mood": "",
+    "inspirationAnalyzed": false,
+    "inspirations": {
+      "general": [],
+      "sections": {}
+    }
+  },
+  "status": {
+    "currentPhase": "",
+    "completedPhases": [],
+    "lastUpdated": ""
+  }
+}

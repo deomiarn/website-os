@@ -1,0 +1,94 @@
+{
+  "$schema": "./schemas/design-tokens.schema.json",
+  "version": "1.0.0",
+  "meta": {
+    "name": "",
+    "description": "",
+    "createdAt": ""
+  },
+  "colors": {
+    "light": {
+      "background": "",
+      "foreground": "",
+      "card": "",
+      "cardForeground": "",
+      "popover": "",
+      "popoverForeground": "",
+      "primary": "",
+      "primaryForeground": "",
+      "secondary": "",
+      "secondaryForeground": "",
+      "accent": "",
+      "accentForeground": "",
+      "muted": "",
+      "mutedForeground": "",
+      "destructive": "",
+      "destructiveForeground": "",
+      "border": "",
+      "input": "",
+      "ring": ""
+    },
+    "dark": {
+      "background": "",
+      "foreground": "",
+      "card": "",
+      "cardForeground": "",
+      "popover": "",
+      "popoverForeground": "",
+      "primary": "",
+      "primaryForeground": "",
+      "secondary": "",
+      "secondaryForeground": "",
+      "accent": "",
+      "accentForeground": "",
+      "muted": "",
+      "mutedForeground": "",
+      "destructive": "",
+      "destructiveForeground": "",
+      "border": "",
+      "input": "",
+      "ring": ""
+    },
+    "semantic": {
+      "success": "",
+      "warning": "",
+      "info": ""
+    },
+    "charts": {
+      "chart1": "",
+      "chart2": "",
+      "chart3": "",
+      "chart4": "",
+      "chart5": ""
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "display": "",
+      "body": "",
+      "mono": ""
+    },
+    "fontUrls": {
+      "display": "",
+      "body": ""
+    },
+    "scale": {},
+    "lineHeight": {},
+    "letterSpacing": {},
+    "fontWeight": {}
+  },
+  "spacing": {
+    "base": "",
+    "scale": {},
+    "section": {}
+  },
+  "radius": {},
+  "shadows": {},
+  "animations": {
+    "duration": {},
+    "easing": {},
+    "keyframes": {}
+  },
+  "breakpoints": {},
+  "container": {}
+}

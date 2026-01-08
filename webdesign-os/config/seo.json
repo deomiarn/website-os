@@ -1,0 +1,54 @@
+{
+  "$schema": "./schemas/seo.schema.json",
+  "version": "1.0.0",
+  "global": {
+    "siteName": "",
+    "siteUrl": "",
+    "defaultTitle": "",
+    "titleTemplate": "%s | Site Name",
+    "defaultDescription": "",
+    "defaultKeywords": [],
+    "locale": "en_US",
+    "twitterHandle": "",
+    "ogImage": {
+      "url": "",
+      "width": 1200,
+      "height": 630,
+      "alt": ""
+    }
+  },
+  "robots": {
+    "index": true,
+    "follow": true,
+    "noarchive": false,
+    "nosnippet": false,
+    "noimageindex": false
+  },
+  "schema": {
+    "organization": {
+      "name": "",
+      "url": "",
+      "logo": "",
+      "sameAs": []
+    },
+    "localBusiness": null,
+    "website": {
+      "searchAction": false
+    }
+  },
+  "sitemap": {
+    "enabled": true,
+    "changefreq": "weekly",
+    "priority": {
+      "home": 1.0,
+      "main": 0.8,
+      "blog": 0.6,
+      "other": 0.5
+    }
+  },
+  "analytics": {
+    "googleAnalyticsId": "",
+    "googleTagManagerId": "",
+    "plausibleDomain": ""
+  }
+}

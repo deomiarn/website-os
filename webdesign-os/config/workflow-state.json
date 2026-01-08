@@ -1,0 +1,116 @@
+{
+  "$schema": "./schemas/workflow-state.schema.json",
+  "version": "3.0.0",
+  "currentStep": 1,
+  "steps": [
+    {
+      "id": 1,
+      "name": "Init Project",
+      "command": "/init-project",
+      "status": "pending",
+      "summary": null,
+      "completedAt": null,
+      "data": null
+    },
+    {
+      "id": 2,
+      "name": "Content Plan",
+      "command": "/content-plan",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 3,
+      "name": "Design System",
+      "command": "/design-system",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "data": null
+    },
+    {
+      "id": 4,
+      "name": "Shape Pages",
+      "command": "/shape-pages",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 5,
+      "name": "Write Spec",
+      "command": "/write-spec",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 6,
+      "name": "Implement",
+      "command": "/implement",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 7,
+      "name": "SEO",
+      "command": "/seo",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 8,
+      "name": "Refine",
+      "command": "/refine",
+      "status": "locked",
+      "optional": true,
+      "summary": null,
+      "completedAt": null,
+      "pages": [],
+      "data": null
+    },
+    {
+      "id": 9,
+      "name": "Verify & Export",
+      "command": "/verify",
+      "status": "locked",
+      "summary": null,
+      "completedAt": null,
+      "data": null
+    }
+  ],
+  "customSections": {
+    "description": "Alle Sections werden custom basierend auf User-Inspirationen erstellt",
+    "sources": [
+      "inspirations/general/",
+      "inspirations/sections/",
+      "inspirations/pages/",
+      "user-provided-code-snippets"
+    ]
+  },
+  "validationCheckpoints": {
+    "enabled": true,
+    "checks": [
+      "typescript",
+      "designTokens",
+      "responsive",
+      "accessibility",
+      "animationPerformance",
+      "seo"
+    ]
+  },
+  "history": []
+}
