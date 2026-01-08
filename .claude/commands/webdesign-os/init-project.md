@@ -19,6 +19,53 @@ Begrüße den Benutzer und erkläre kurz den Prozess:
 
 Los geht's!"
 
+### 1.5 Bestehende Website (Optional)
+
+**Frage ZUERST ob eine bestehende Website existiert:**
+
+"**Hat der Kunde bereits eine Website?**
+
+| Option | Beschreibung |
+|--------|--------------|
+| **Ja** | Gib mir die URL - ich analysiere sie für mehr Kontext |
+| **Nein** | Wir starten komplett neu |
+
+Falls **Ja**, gib mir die URL:"
+
+#### Bei URL-Angabe:
+
+1. **Website fetchen** mit WebFetch Tool
+2. **Analysieren:**
+   - Brand Name, Tagline
+   - Branche/Industry
+   - Farbschema (Primär, Sekundär, Akzent)
+   - Typography (Headlines, Body)
+   - Seitenstruktur (Navigation analysieren)
+   - Content-Themen
+   - Features (Blog, Shop, Kontaktformular, etc.)
+   - Stil (modern, klassisch, minimalistisch, etc.)
+
+3. **Zusammenfassung zeigen:**
+
+"**📊 Analyse der bestehenden Website:**
+
+| Aspekt | Erkannt |
+|--------|---------|
+| Brand | {name} |
+| Tagline | {tagline} |
+| Branche | {industry} |
+| Farben | {colors} |
+| Stil | {style} |
+| Seiten | {pages} |
+| Features | {features} |
+
+**Diese Infos nutze ich als Basis. Du kannst im Questionnaire alles anpassen.**"
+
+4. **Questionnaire anpassen:**
+   - Erkannte Werte als Vorschläge/Defaults zeigen
+   - User kann bestätigen oder ändern
+   - Beispiel: "Ich habe **{brand-name}** erkannt. Stimmt das?"
+
 ### 2. Questionnaire
 
 Stelle folgende Fragen nacheinander (warte auf Antworten):

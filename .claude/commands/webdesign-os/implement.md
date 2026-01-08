@@ -106,13 +106,38 @@ Geplante Sections: {anzahl}
 
 Beim ersten Aufruf oder `/implement setup`:
 
+#### 2.1 shadcn Preset Auswahl
+
+**PFLICHT: Frage den User ZUERST nach dem shadcn Preset:**
+
+"**🎨 shadcn Preset Auswahl**
+
+Bevor ich das Projekt erstelle, welches shadcn Preset soll ich verwenden?
+
+| Option | Beschreibung |
+|--------|--------------|
+| **Default** | Vordefiniertes Theme mit Vega Style, neutral colors, Inter font |
+| **Custom** | Du gibst mir einen eigenen shadcn create Befehl |
+
+**Default Befehl:**
+```bash
+pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=radix&style=vega&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=next" --template next
+```
+
+**Welche Option: Default oder Custom?**"
+
+- Bei **Default**: Verwende den vordefinierten Befehl
+- Bei **Custom**: Warte auf den User-Befehl
+
+#### 2.2 Projekt erstellen
+
 "**Implement - Projekt Setup**
 
-Ich erstelle das Next.js Projekt:
+Ich erstelle das Next.js Projekt mit shadcn:
 - Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS
-- shadcn/ui (mit deinem Theme)
+- shadcn/ui ({preset-type}: {default/custom})
 - Framer Motion
 
 **Projekt-Name:** {projectName}
@@ -122,20 +147,36 @@ Starte Setup?"
 
 Bei Bestätigung:
 
+**Option A - Default Preset:**
 ```bash
-# Next.js erstellen
-npx create-next-app@latest exports/{project-name} \
-  --typescript --tailwind --eslint --app --src-dir
+# shadcn create mit Default Preset (erstellt Next.js + shadcn in einem Schritt)
+cd exports
+pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=radix&style=vega&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=next" --template next {project-name}
 
 # In Projekt wechseln
-cd exports/{project-name}
+cd {project-name}
 
-# Dependencies
-npm install framer-motion lucide-react class-variance-authority clsx tailwind-merge
+# Zusätzliche Dependencies
+pnpm add framer-motion class-variance-authority clsx tailwind-merge
 
-# shadcn/ui
-npx shadcn@latest init -y
-npx shadcn@latest add button card badge separator skeleton accordion switch input textarea label
+# Weitere shadcn Komponenten
+pnpm dlx shadcn@latest add button card badge separator skeleton accordion switch input textarea label
+```
+
+**Option B - Custom Preset:**
+```bash
+# User's custom shadcn create Befehl
+cd exports
+{user-provided-command} {project-name}
+
+# In Projekt wechseln
+cd {project-name}
+
+# Zusätzliche Dependencies
+pnpm add framer-motion class-variance-authority clsx tailwind-merge
+
+# Weitere shadcn Komponenten
+pnpm dlx shadcn@latest add button card badge separator skeleton accordion switch input textarea label
 ```
 
 Dann:
