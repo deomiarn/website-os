@@ -102,7 +102,32 @@ Prüfe ob diese Klassen vorhanden sind:
 | Alt-Texte beschreibend | Nicht nur "image" |
 | Semantisches HTML | `<section>`, `<article>` verwendet |
 
-#### 2.7 Design Excellence Check (KRITISCH)
+#### 2.7 Visual Style Check mit Playwright MCP
+
+**Verwende Playwright für visuelles Feedback und Style-Verbesserungen:**
+
+```
+Tool: mcp__next-devtools__browser_eval
+
+1. action: "start" → Browser starten
+2. action: "navigate", url: "http://localhost:3000" → Website laden
+3. action: "screenshot", fullPage: true → Screenshot der gesamten Seite
+4. action: "close" → Browser schließen
+```
+
+**Was prüfen:**
+- Visuelle Hierarchie korrekt?
+- Farben wie in Design Tokens?
+- Spacing/Whitespace ausreichend?
+- Layout-Probleme sichtbar?
+- Mobile/Tablet Darstellung
+
+**Bei Style-Problemen:**
+- Screenshot analysieren
+- Konkrete CSS/Tailwind Fixes vorschlagen
+- Iterieren bis visuell stimmig
+
+#### 2.8 Design Excellence Check (KRITISCH)
 
 **Dies ist die WICHTIGSTE Validierung!** Eine technisch korrekte aber visuell generische Section ist NICHT akzeptabel.
 
@@ -228,11 +253,15 @@ Nur die wichtigsten Checks:
 
 Für schnelle Iteration während der Entwicklung.
 
-## Skills
+## Skills & MCPs
 
 **KRITISCH:**
 - `design-excellence` ← 7-Category Scoring System
 - `component-validator` ← Technical Validation Checks
+
+**MCPs:**
+- `mcp__next-devtools__browser_eval` ← Playwright für visuelle Style-Prüfung
+- `mcp__next-devtools__nextjs_call` ← Next.js Errors abfragen
 
 ## Output
 

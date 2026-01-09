@@ -34,16 +34,17 @@ Falls **Ja**, gib mir die URL:"
 
 #### Bei URL-Angabe:
 
-1. **Website fetchen** mit WebFetch Tool
-2. **Analysieren:**
-   - Brand Name, Tagline
-   - Branche/Industry
-   - Farbschema (Primär, Sekundär, Akzent)
-   - Typography (Headlines, Body)
-   - Seitenstruktur (Navigation analysieren)
-   - Content-Themen
+1. **Website fetchen:**
+   - **Primär:** WebFetch Tool verwenden
+   - **Fallback bei 403:** Playwright MCP (manche Websites blockieren Bots)
+
+2. **Content analysieren** (Styling ist egal, nur Inhalt zählt):
+   - Brand Name, Tagline (aus Header/Logo/Title)
+   - Branche/Industry (aus Content-Themen)
+   - Seitenstruktur (Navigation Links)
+   - Content-Themen und Texte
    - Features (Blog, Shop, Kontaktformular, etc.)
-   - Stil (modern, klassisch, minimalistisch, etc.)
+   - Grobe Kategorisierung des Stils
 
 3. **Zusammenfassung zeigen:**
 
@@ -54,10 +55,9 @@ Falls **Ja**, gib mir die URL:"
 | Brand | {name} |
 | Tagline | {tagline} |
 | Branche | {industry} |
-| Farben | {colors} |
-| Stil | {style} |
 | Seiten | {pages} |
 | Features | {features} |
+| Stil | {grobe Kategorisierung} |
 
 **Diese Infos nutze ich als Basis. Du kannst im Questionnaire alles anpassen.**"
 

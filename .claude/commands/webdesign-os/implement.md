@@ -159,8 +159,17 @@ cd {project-name}
 # Zusätzliche Dependencies
 pnpm add framer-motion class-variance-authority clsx tailwind-merge
 
-# Weitere shadcn Komponenten
+# Weitere shadcn Komponenten (oder via shadcn MCP)
 pnpm dlx shadcn@latest add button card badge separator skeleton accordion switch input textarea label
+```
+
+**shadcn MCP für Komponenten:**
+```
+Tool: mcp__shadcn__search_items_in_registries
+→ Suche nach Komponenten
+
+Tool: mcp__shadcn__get_add_command_for_items
+→ Hole Installations-Befehl
 ```
 
 **Option B - Custom Preset:**
@@ -195,8 +204,31 @@ Dann:
 **Projekt starten:**
 ```bash
 cd exports/{project-name}
-npm run dev
+pnpm dev
 ```
+
+#### 2.3 Next.js MCP für Development
+
+**Nach dem Start des Dev-Servers:**
+
+Verwende Next.js MCP für besseres Debugging:
+
+```
+1. nextjs_index → Entdecke laufenden Dev-Server
+2. nextjs_call → Hole Errors, Routes, Build-Status
+```
+
+**Beispiel:**
+```
+Tool: mcp__next-devtools__nextjs_index
+→ Zeigt Port, verfügbare Tools
+
+Tool: mcp__next-devtools__nextjs_call
+→ port: "3000", toolName: "get_errors"
+→ Zeigt Compilation/Runtime Errors
+```
+
+**Nutze dies bei jedem Build-Problem!**
 
 **Welche Seite als erste implementieren?**"
 
