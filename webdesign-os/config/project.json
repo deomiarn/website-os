@@ -1,53 +1,195 @@
 {
   "$schema": "./schemas/project.schema.json",
   "version": "1.0.0",
-  "name": "",
+  "name": "Zahnarzt Dielsdorf",
   "brand": {
-    "name": "",
-    "tagline": "",
-    "industry": "",
-    "values": [],
+    "name": "Zahnarzt Dielsdorf",
+    "tagline": "Praxis Dr. Mirjam Gaggl",
+    "industry": "Zahnmedizin / Zahnarztpraxis",
+    "values": ["Vertrauen", "Kompetenz", "Freundlichkeit"],
     "voice": {
-      "tone": "",
-      "personality": []
+      "tone": "warm, professionell, einladend",
+      "personality": ["familiär", "kompetent", "modern", "einfühlsam"]
+    },
+    "usps": [
+      "Familiäre Atmosphäre",
+      "Moderne Technologie (Invisalign, Intraoralscanner, The Wand Plus)",
+      "Eingespieltes Frauen-Team",
+      "Breites Behandlungsspektrum",
+      "SSO-Mitglied"
+    ],
+    "contact": {
+      "address": "Wehntalerstrasse 44",
+      "city": "8157 Dielsdorf",
+      "country": "Schweiz",
+      "phone": "+41 44 853 22 74",
+      "email": "info@zahnarzt-dielsdorf.ch"
     }
   },
   "audience": {
-    "primary": "",
-    "demographics": {},
-    "archetypes": [],
-    "problems": [],
-    "needs": [],
-    "goals": []
+    "primary": "Lokale Bewohner aus Dielsdorf & Umgebung",
+    "demographics": {
+      "age": "Kind bis Erwachsen (Fokus: Erwachsene)",
+      "location": "Dielsdorf und Umgebung, Schweiz"
+    },
+    "archetypes": [
+      "Familien mit Kindern",
+      "Berufstätige aus der Region",
+      "Ältere Patienten",
+      "Angstpatienten",
+      "Ästhetik-bewusste Patienten"
+    ],
+    "problems": [
+      "Zahnarztangst",
+      "Ästhetische Zahnprobleme",
+      "Regelmässige Zahnpflege",
+      "Zahnersatz-Bedarf",
+      "Kieferorthopädische Korrekturen"
+    ],
+    "needs": [
+      "Vertrauensvolle, schmerzarme Behandlung",
+      "Moderne Behandlungsmethoden",
+      "Freundliche, familiäre Atmosphäre",
+      "Kompetente Beratung",
+      "Gute Erreichbarkeit"
+    ],
+    "goals": [
+      "Gesunde Zähne",
+      "Schönes Lächeln",
+      "Angstfreie Zahnarztbesuche",
+      "Regelmässige Vorsorge"
+    ]
   },
-  "type": "",
-  "pages": [],
+  "type": "onepager",
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home (Onepager)",
+      "path": "/",
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Hero",
+          "description": "Name, Tagline, Hauptbild, CTA 'Termin vereinbaren'"
+        },
+        {
+          "id": "about",
+          "name": "Über uns",
+          "description": "Praxis-Vorstellung, Werte, kurze Geschichte"
+        },
+        {
+          "id": "services",
+          "name": "Behandlungen",
+          "description": "Übersicht aller Leistungen mit Icons"
+        },
+        {
+          "id": "team",
+          "name": "Team",
+          "description": "Alle Mitarbeiterinnen mit Fotos und Rollen"
+        },
+        {
+          "id": "features",
+          "name": "Besonderheiten",
+          "description": "Invisalign, Intraoralscanner, The Wand Plus - moderne Technologie"
+        },
+        {
+          "id": "cta",
+          "name": "CTA",
+          "description": "Call-to-Action Sektion 'Jetzt Termin buchen'"
+        },
+        {
+          "id": "contact",
+          "name": "Kontakt/Footer",
+          "description": "Adresse, Öffnungszeiten, Kontaktformular, Google Maps, Anfahrt"
+        }
+      ]
+    }
+  ],
   "features": {
     "blog": false,
     "commerce": false,
     "auth": false,
-    "contactForm": false,
+    "contactForm": true,
     "newsletter": false,
     "analytics": false,
     "darkMode": false,
-    "booking": false
+    "booking": false,
+    "stickyNav": true,
+    "scrollAnimations": true,
+    "googleMaps": true
   },
   "designPreferences": {
-    "style": "",
-    "colorPreferences": [],
-    "typography": {},
-    "characteristics": [],
-    "mood": "",
-    "inspirationAnalyzed": false,
+    "style": "Modern & Clean",
+    "colorPreferences": ["Beige", "Creme", "Grün", "Gold", "Warm & Einladend"],
+    "typography": {
+      "style": "Modern, klar, gut lesbar",
+      "headings": "Grosse, prägnante Headlines"
+    },
+    "characteristics": [
+      "Asymmetrische Bild-Layouts",
+      "Viel Weissraum",
+      "Grosse Headlines",
+      "Cards/Grid für Services",
+      "Bild-Text nebeneinander",
+      "Icons + Text für USPs"
+    ],
+    "mood": "Familiär, Einladend, Professionell, Vertrauenswürdig",
+    "inspirationAnalyzed": true,
     "inspirations": {
-      "general": [],
+      "general": [
+        "webdesign-os/inspirations/hero1.png",
+        "webdesign-os/inspirations/bild1.jpg",
+        "webdesign-os/inspirations/bild2.jpg",
+        "webdesign-os/inspirations/bild3.jpg"
+      ],
       "sections": {},
-      "analysis": {}
+      "analysis": {
+        "layoutPatterns": [
+          "Asymmetrische Hero-Layouts",
+          "Bild-Text Kombinationen",
+          "Card-Grids für Services",
+          "Icon-basierte Feature-Listen",
+          "Tabs für Inhaltsorganisation",
+          "Prozess-Visualisierung mit Steps"
+        ],
+        "note": "Inspirationen für Layout/Struktur, nicht Farben"
+      }
     }
   },
+  "existingWebsite": {
+    "url": "https://www.zahnarzt-dielsdorf.ch/",
+    "analyzed": true,
+    "team": [
+      {"name": "Dr. med. dent. Mirjam Gaggl", "role": "Zahnärztin und Praxisinhaberin"},
+      {"name": "Agata Ostrowska-Blystak", "role": "Zahnärztin"},
+      {"name": "Rossana Leone", "role": "Prophylaxeassistentin"},
+      {"name": "Daniela Vicario", "role": "Prophylaxeassistentin"},
+      {"name": "Sandra Schmassmann", "role": "Dentalassistentin"},
+      {"name": "Katharina Sandor", "role": "Dentalsekretärin"},
+      {"name": "Christine Egli", "role": "Dentalsekretärin"},
+      {"name": "Daniela Balbo", "role": "Dentalassistentin"},
+      {"name": "Andela Sucur", "role": "Dentalassistentin in Ausbildung"},
+      {"name": "Suhejla Kryezi", "role": "Dentalassistentin in Ausbildung"}
+    ],
+    "services": [
+      "Prophylaxe (Vorbeugung)",
+      "Dentalhygiene (Zahnreinigung)",
+      "Konservierende Zahnmedizin (Zahnerhalt)",
+      "Inlay / Onlay (Keramikfüllung)",
+      "Endodontologie (Wurzelbehandlung)",
+      "Parodontologie (Zahnfleischbehandlung)",
+      "Bleaching (Bleichen)",
+      "Veneers (Keramik-Verblendschalen)",
+      "Kronen- / Brücken-Prothetik (festsitzender Zahnersatz)",
+      "Teil- / Total-Prothetik (abnehmbarer Zahnersatz)",
+      "Intraoralscanner",
+      "Invisalign (unsichtbare Zahnspange)",
+      "The Wand Plus (schmerzfreie Anästhesie)"
+    ]
+  },
   "status": {
-    "currentPhase": "",
-    "completedPhases": [],
-    "lastUpdated": ""
+    "currentPhase": "init-project",
+    "completedPhases": ["init-project"],
+    "lastUpdated": "2026-01-09"
   }
 }

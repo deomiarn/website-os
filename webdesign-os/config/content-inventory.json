@@ -1,4 +1,267 @@
 {
   "$schema": "./schemas/content-inventory.schema.json",
-  "pages": []
+  "version": "1.0.0",
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home (Onepager)",
+      "path": "/",
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Hero",
+          "content": {
+            "headline": "Ihre Zahnarztpraxis in Dielsdorf",
+            "subHeadline": "Familiäre Atmosphäre. Moderne Behandlung.",
+            "cta": {
+              "text": "Termin vereinbaren",
+              "action": "scroll-to-contact"
+            },
+            "phone": "+41 44 853 22 74",
+            "showPhone": true
+          },
+          "images": {
+            "hero": {
+              "type": "placeholder",
+              "description": "Praxis-Foto oder Team-Foto",
+              "aspectRatio": "16:9"
+            }
+          }
+        },
+        {
+          "id": "about",
+          "name": "Über uns",
+          "content": {
+            "headline": "Willkommen in unserer Praxis",
+            "text": "2-3 Absätze über Praxis, Philosophie und Geschichte",
+            "values": [
+              {
+                "icon": "shield-check",
+                "title": "Vertrauen",
+                "description": "Ihre Gesundheit in guten Händen"
+              },
+              {
+                "icon": "award",
+                "title": "Kompetenz",
+                "description": "Moderne Zahnmedizin auf höchstem Niveau"
+              },
+              {
+                "icon": "heart",
+                "title": "Freundlichkeit",
+                "description": "Familiäre Atmosphäre für Ihr Wohlbefinden"
+              }
+            ],
+            "includeHistory": true
+          },
+          "images": {
+            "about": {
+              "type": "placeholder",
+              "description": "Foto von Dr. Gaggl oder Praxis-Innenraum",
+              "aspectRatio": "4:3"
+            }
+          }
+        },
+        {
+          "id": "services",
+          "name": "Behandlungen",
+          "content": {
+            "headline": "Unsere Behandlungen",
+            "subHeadline": "Das gesamte Spektrum der modernen Zahnmedizin",
+            "displayType": "cards",
+            "groupByCategory": true,
+            "categories": [
+              {
+                "name": "Vorsorge",
+                "services": [
+                  {"name": "Prophylaxe", "description": "Vorbeugung"},
+                  {"name": "Dentalhygiene", "description": "Zahnreinigung"}
+                ]
+              },
+              {
+                "name": "Zahnerhalt",
+                "services": [
+                  {"name": "Konservierende Zahnmedizin", "description": "Zahnerhalt"},
+                  {"name": "Inlay / Onlay", "description": "Keramikfüllung"},
+                  {"name": "Endodontologie", "description": "Wurzelbehandlung"}
+                ]
+              },
+              {
+                "name": "Zahnfleisch",
+                "services": [
+                  {"name": "Parodontologie", "description": "Zahnfleischbehandlung"}
+                ]
+              },
+              {
+                "name": "Ästhetik",
+                "services": [
+                  {"name": "Bleaching", "description": "Bleichen"},
+                  {"name": "Veneers", "description": "Keramik-Verblendschalen"},
+                  {"name": "Invisalign", "description": "Unsichtbare Zahnspange"}
+                ]
+              },
+              {
+                "name": "Zahnersatz",
+                "services": [
+                  {"name": "Kronen- / Brücken-Prothetik", "description": "Festsitzender Zahnersatz"},
+                  {"name": "Teil- / Total-Prothetik", "description": "Abnehmbarer Zahnersatz"}
+                ]
+              }
+            ],
+            "totalServices": 13
+          },
+          "images": {
+            "type": "none",
+            "note": "Icons für jede Kategorie"
+          }
+        },
+        {
+          "id": "team",
+          "name": "Team",
+          "content": {
+            "headline": "Unser Team",
+            "subHeadline": "Kompetent und herzlich",
+            "members": [
+              {"name": "Dr. med. dent. Mirjam Gaggl", "role": "Zahnärztin und Praxisinhaberin"},
+              {"name": "Agata Ostrowska-Blystak", "role": "Zahnärztin"},
+              {"name": "Rossana Leone", "role": "Prophylaxeassistentin"},
+              {"name": "Daniela Vicario", "role": "Prophylaxeassistentin"},
+              {"name": "Sandra Schmassmann", "role": "Dentalassistentin"},
+              {"name": "Katharina Sandor", "role": "Dentalsekretärin"},
+              {"name": "Christine Egli", "role": "Dentalsekretärin"},
+              {"name": "Daniela Balbo", "role": "Dentalassistentin"},
+              {"name": "Andela Sucur", "role": "Dentalassistentin in Ausbildung"},
+              {"name": "Suhejla Kryezi", "role": "Dentalassistentin in Ausbildung"}
+            ],
+            "totalMembers": 10
+          },
+          "images": {
+            "type": "placeholder",
+            "count": 10,
+            "description": "Porträt-Fotos aller Teammitglieder",
+            "aspectRatio": "1:1"
+          }
+        },
+        {
+          "id": "features",
+          "name": "Besonderheiten",
+          "content": {
+            "headline": "Moderne Technologie",
+            "subHeadline": "Für Ihre optimale Behandlung",
+            "features": [
+              {
+                "name": "Invisalign",
+                "headline": "Unsichtbare Zahnspange",
+                "description": "Diskrete Zahnkorrektur mit transparenten Schienen"
+              },
+              {
+                "name": "Intraoralscanner",
+                "headline": "Digitaler Abdruck",
+                "description": "Präzise 3D-Scans ohne unangenehmen Abdruckmaterial"
+              },
+              {
+                "name": "The Wand Plus",
+                "headline": "Schmerzfreie Anästhesie",
+                "description": "Computergesteuerte Betäubung für maximalen Komfort"
+              }
+            ],
+            "totalFeatures": 3
+          },
+          "images": {
+            "type": "placeholder",
+            "count": 3,
+            "description": "Bilder der Technologien/Geräte",
+            "aspectRatio": "16:9"
+          }
+        },
+        {
+          "id": "cta",
+          "name": "CTA",
+          "content": {
+            "headline": "Vereinbaren Sie Ihren Termin",
+            "subHeadline": "Wir freuen uns auf Sie!",
+            "buttons": [
+              {
+                "text": "Jetzt anrufen",
+                "icon": "phone",
+                "action": "tel:+41448532274",
+                "variant": "primary"
+              },
+              {
+                "text": "E-Mail schreiben",
+                "icon": "mail",
+                "action": "mailto:info@zahnarzt-dielsdorf.ch",
+                "variant": "secondary"
+              }
+            ],
+            "background": "accent"
+          },
+          "images": {
+            "type": "none",
+            "note": "Farbiger Hintergrund statt Bild"
+          }
+        },
+        {
+          "id": "contact",
+          "name": "Kontakt/Footer",
+          "content": {
+            "headline": "Kontakt",
+            "address": {
+              "street": "Wehntalerstrasse 44",
+              "city": "8157 Dielsdorf",
+              "country": "Schweiz"
+            },
+            "phone": "+41 44 853 22 74",
+            "email": "info@zahnarzt-dielsdorf.ch",
+            "openingHours": [
+              {"day": "Montag", "hours": "08:00–19:00"},
+              {"day": "Dienstag", "hours": "08:00–20:00"},
+              {"day": "Mittwoch", "hours": "08:00–17:00"},
+              {"day": "Donnerstag", "hours": "08:00–18:00"},
+              {"day": "Freitag", "hours": "08:00–13:00"},
+              {"day": "Samstag", "hours": "Geschlossen"},
+              {"day": "Sonntag", "hours": "Geschlossen"}
+            ],
+            "googleMaps": {
+              "enabled": true,
+              "coordinates": {
+                "lat": 47.4806,
+                "lng": 8.4556
+              }
+            },
+            "contactForm": {
+              "enabled": true,
+              "fields": ["name", "email", "message"]
+            },
+            "onlineBooking": {
+              "enabled": true,
+              "url": "https://www.local.ch/en/d/dielsdorf/8157/dentist/dr-med-dent-gaggl-mirjam-F4K5ChnxndJwuvxqZ0ii6w#open-booking"
+            },
+            "badges": [
+              {
+                "name": "SSO",
+                "description": "Mitglied Schweizerische Zahnärzte-Gesellschaft",
+                "showLogo": true
+              }
+            ]
+          },
+          "images": {
+            "type": "embedded",
+            "note": "Google Maps Embed"
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalSections": 7,
+    "totalImages": 15,
+    "imageStatus": "all-placeholder",
+    "totalServices": 13,
+    "totalTeamMembers": 10,
+    "totalFeatures": 3
+  },
+  "metadata": {
+    "createdAt": "2026-01-09",
+    "updatedAt": "2026-01-09"
+  }
 }
