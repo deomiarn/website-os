@@ -1,4 +1,21 @@
 {
+  "globalComponents": {
+    "navbar": {
+      "required": true,
+      "description": "Navigation Header - IMMER als separate Komponente implementieren",
+      "variations": ["sticky", "fixed", "relative", "transparent"]
+    },
+    "footer": {
+      "required": true,
+      "description": "Footer - IMMER separat von Contact Section implementieren",
+      "variations": ["simple", "multi-column", "mega-footer", "minimal"]
+    }
+  },
+  "rules": {
+    "contactIsNotFooter": true,
+    "navbarAndFooterRequired": true,
+    "description": "Contact Section und Footer sind IMMER separate Komponenten. Navbar und Footer müssen bei JEDER Website implementiert werden."
+  },
   "pageTypes": {
     "home": {
       "minimum": 5,

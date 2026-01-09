@@ -75,20 +75,27 @@ Lese:
 
 "**📸 Aktive Inspirationen für dieses Projekt:**
 
-| Inspiration | Stil | Farbpalette | Typography |
-|-------------|------|-------------|------------|
-| {name1} | {stil} | {farben} | {fonts} |
-| {name2} | {stil} | {farben} | {fonts} |
+| Inspiration | Layout-Stil | Struktur |
+|-------------|-------------|----------|
+| {name1} | {layout} | {struktur} |
+| {name2} | {layout} | {struktur} |
 
-**Design-Richtlinien (aus Inspirationen abgeleitet):**
+**⚠️ WICHTIG: Inspirationen = NUR LAYOUT!**
 
-- **Dominant Color:** {dominant aus Analyse}
-- **Accent Color:** {accent aus Analyse}
-- **Display Font:** {font-display aus Analyse}
-- **Atmosphere:** {mood aus Analyse}
-- **Layout-Stil:** {layout aus Analyse}
+Aus Inspirationen übernehmen:
+- ✅ Layout-Struktur, Grid-Anordnung
+- ✅ Section-Aufbau, Element-Positionen
+- ✅ Bild-Positionen, Asymmetrie
+- ✅ Spacing-Verhältnisse, Whitespace
 
-Diese Richtlinien werden bei JEDER Section angewendet!"
+**NICHT aus Inspirationen (→ Design Tokens):**
+- ❌ Farben
+- ❌ Fonts/Typography
+- ❌ Schriftgrößen
+
+**Farben, Fonts, Typography kommen aus den Design Tokens!**
+
+Diese Layout-Richtlinien werden bei JEDER Section angewendet!"
 
 ### 1.6 Section-Minimum validieren
 
@@ -231,6 +238,50 @@ Tool: mcp__next-devtools__nextjs_call
 **Nutze dies bei jedem Build-Problem!**
 
 **Welche Seite als erste implementieren?**"
+
+#### 2.4 Layout-Komponenten (PFLICHT - VOR Sections!)
+
+**KRITISCH: Navbar und Footer werden ZUERST implementiert!**
+
+Lade `section-standards.json` und prüfe `globalComponents` - beide sind REQUIRED:
+
+"**Layout-Komponenten erstellen (PFLICHT):**
+
+**1. Navbar implementieren:**
+- Datei: `components/layout/header.tsx`
+- Mobile Menu: `components/layout/mobile-nav.tsx`
+- Design nach Spec aus `/shape-pages`
+
+**2. Footer implementieren:**
+- Datei: `components/layout/footer.tsx`
+- **SEPARAT von Contact Section!**
+- Design nach Spec aus `/shape-pages`
+
+**3. Layout zusammenbauen:**
+```tsx
+// app/layout.tsx
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <Header />    {/* ← PFLICHT */}
+        <main>{children}</main>
+        <Footer />    {/* ← PFLICHT, SEPARAT von Contact */}
+      </body>
+    </html>
+  )
+}
+```
+
+⚠️ **WICHTIG - Contact Section ≠ Footer:**
+- **Contact Section** = Content-Section (Kontaktformular, Google Map, Kontakt-Infos, Öffnungszeiten)
+- **Footer** = Layout-Komponente (Navigation Links, Copyright, Social Icons, Newsletter)
+- **BEIDES** implementieren, **SEPARAT**!
+
+Layout-Komponenten fertig?"
 
 ### 3. Seiten-Übersicht
 
@@ -747,23 +798,25 @@ Update workflow-state.json:
 ```
 exports/{project-name}/
 ├── app/
-│   ├── layout.tsx
+│   ├── layout.tsx            # MIT Header + Footer!
 │   ├── page.tsx              # Home
 │   ├── about/page.tsx
 │   ├── services/page.tsx
 │   └── contact/page.tsx
 ├── components/
 │   ├── ui/                   # shadcn
-│   ├── sections/             # Custom Sections
+│   ├── sections/             # Content Sections
 │   │   ├── HeroSection.tsx
 │   │   ├── FeaturesSection.tsx
 │   │   ├── TestimonialsSection.tsx
 │   │   ├── FAQSection.tsx
 │   │   ├── CTASection.tsx
+│   │   ├── ContactSection.tsx  # ← SECTION (Formular, Map, Infos)
 │   │   └── ...
-│   ├── layout/
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
+│   ├── layout/               # Layout Komponenten (PFLICHT!)
+│   │   ├── header.tsx        # ← NAVBAR (PFLICHT)
+│   │   ├── mobile-nav.tsx
+│   │   ├── footer.tsx        # ← FOOTER (PFLICHT, ≠ Contact!)
 │   │   ├── container.tsx
 │   │   └── section-header.tsx
 │   └── shared/
@@ -771,6 +824,11 @@ exports/{project-name}/
 ├── styles/globals.css
 └── tailwind.config.ts
 ```
+
+**⚠️ Contact Section vs Footer:**
+- `ContactSection.tsx` = Content (Kontaktformular, Google Map, Kontakt-Infos)
+- `footer.tsx` = Layout (Navigation Links, Copyright, Social Icons)
+- **BEIDE implementieren, SEPARAT!**
 
 ## User Code Integration
 

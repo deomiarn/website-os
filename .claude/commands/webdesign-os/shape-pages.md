@@ -55,6 +55,41 @@ Lade `section-standards.json` und bestimme für die gewählte Seite:
 
 **⚠️ WICHTIG:** Niemals weniger als **{minimum}** Sections vorschlagen!"
 
+### 1.6 Layout-Komponenten (PFLICHT)
+
+**KRITISCH: Navbar und Footer werden IMMER als separate Komponenten geplant!**
+
+Lade `section-standards.json` und prüfe `globalComponents`:
+
+"**Layout-Komponenten (Pflicht für jede Website):**
+
+| Komponente | Status | Beschreibung |
+|------------|--------|--------------|
+| **Navbar** | REQUIRED | Navigation Header - sticky/fixed/relative/transparent |
+| **Footer** | REQUIRED | Footer - SEPARAT von Contact Section |
+
+⚠️ **WICHTIG - Contact Section ≠ Footer:**
+- **Contact Section** = Content-Section (Kontaktformular, Map, Kontakt-Infos, Öffnungszeiten)
+- **Footer** = Layout-Komponente (Navigation Links, Copyright, Social Icons, Newsletter)
+- **BEIDES** muss implementiert werden - SEPARAT!
+
+**Navbar Design:**
+| Aspekt | Optionen |
+|--------|----------|
+| Stil | Sticky / Fixed / Transparent on Hero / Relative |
+| Logo Position | Links / Center |
+| Mobile | Hamburger Menu / Slide-in / Bottom Nav |
+| CTA Button | Ja (welcher?) / Nein |
+
+**Footer Design:**
+| Aspekt | Optionen |
+|--------|----------|
+| Stil | Simple / Multi-Column / Mega-Footer / Minimal |
+| Inhalte | Links / Social / Newsletter / Copyright |
+| Columns | 2 / 3 / 4 |
+
+**Welchen Stil soll Navbar und Footer haben?**"
+
 ### 2. Seiten-Übersicht zeigen
 
 "**Shape Pages - Seiten gestalten**
@@ -146,13 +181,28 @@ Für JEDE Section:
 "**Section 1: Hero**
 
 **Inspiration-Analyse:**
+
+⚠️ **WICHTIG: Inspirationen gelten NUR für LAYOUT/AUFBAU!**
+
+Aus Inspiration-Bildern extrahiere NUR:
+- ✅ Layout-Struktur (Split, Grid, Centered, Asymmetric)
+- ✅ Section-Aufbau (Reihenfolge, Anordnung der Elemente)
+- ✅ Bild-Positionen (Links, Rechts, Hintergrund, Overlay)
+- ✅ Spacing/Whitespace Verhältnisse
+- ✅ Visuelle Hierarchie
+
+❌ NICHT aus Inspirationen übernehmen:
+- ❌ Farben → kommen aus Design Tokens
+- ❌ Fonts → kommen aus Design Tokens
+- ❌ Typografie-Größen → kommen aus Design Tokens
+
 {Falls Inspiration vorhanden, beschreibe was du siehst}
 - Layout: Split/Centered/Fullscreen?
 - Bild-Position: Links/Rechts/Hintergrund?
-- Typography: Größe, Stil der Headline?
-- Besonderheiten: Animationen, Overlays?
+- Struktur: Welche Elemente, wie angeordnet?
+- Besonderheiten: Overlays, Layering, Asymmetrie?
 
-**Design-Vorschlag basierend auf Inspiration:**
+**Design-Vorschlag basierend auf Inspiration (NUR LAYOUT!):**
 
 | Aspekt | Vorschlag | Optionen |
 |--------|-----------|----------|
@@ -161,8 +211,8 @@ Für JEDE Section:
 | Bild-Typ | {aus Inspiration} | Foto / Illustration / Abstrakt / Video |
 | CTA-Stil | Primary + Ghost | Nur Primary / Primary + Secondary / Primary + Ghost |
 | Animation | Fade-in + Slide | Keine / Fade / Slide / Parallax |
-| **Background** | {aus Inspiration} | Gradient / Texture / Image / Solid mit Treatment |
-| **Typography** | {distinctive font} | Dramatische Hierarchy mit Display Font |
+| **Background** | aus Design Tokens | Gradient / Texture / Image / Solid mit Treatment |
+| **Typography** | aus Design Tokens | Dramatische Hierarchy mit Display Font |
 
 **SEO für Hero:**
 - H1: Enthält '{targetKeyword}'?
@@ -361,10 +411,18 @@ Nach allen Sections:
 | Meta Description | {description} |
 | URL | {slug} |
 
+**Layout-Komponenten (PFLICHT):**
+| Komponente | Design | Status |
+|------------|--------|--------|
+| Navbar | {style: sticky/fixed/etc.} | ✓ geplant |
+| Footer | {style: simple/multi-column/etc.} | ✓ geplant |
+
+⚠️ **Contact Section und Footer sind SEPARATE Komponenten!**
+
 **Sections (Custom Design):**
 | # | Section | Design-Basis | Code-Snippet | Excellence Score |
 |---|---------|--------------|--------------|------------------|
-| 1 | Hero | Inspiration + Custom | {ja/nein} | {score}/10 ✓ |
+| 1 | Hero | Inspiration (Layout) + Tokens | {ja/nein} | {score}/10 ✓ |
 | 2 | Features | Custom | {ja/nein} | {score}/10 ✓ |
 | 3 | Testimonials | Custom | {ja/nein} | {score}/10 ✓ |
 | 4 | FAQ | Custom | {ja/nein} | {score}/10 ✓ |

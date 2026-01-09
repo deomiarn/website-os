@@ -52,6 +52,42 @@ Lese:
 
 Welche Seite soll spezifiziert werden?"
 
+### 2.5 Layout-Komponenten Spec (PFLICHT)
+
+**BEVOR Sections spezifiziert werden - Layout-Komponenten definieren:**
+
+Lade `section-standards.json` und prüfe `globalComponents`:
+
+"**Layout-Komponenten Spezifikation (PFLICHT)**
+
+**Navbar:**
+| Aspekt | Spezifikation |
+|--------|---------------|
+| Stil | {sticky/fixed/transparent/relative} |
+| Logo Position | {left/center} |
+| Nav Items | {items aus project.json pages} |
+| Mobile | {hamburger/slide-in/bottom} |
+| CTA Button | {ja/nein, welcher Text, welche Aktion} |
+| Breakpoint | {wann Mobile Menu} |
+
+**Footer:**
+| Aspekt | Spezifikation |
+|--------|---------------|
+| Stil | {simple/multi-column/mega-footer/minimal} |
+| Columns | {anzahl, was in welcher Column} |
+| Links | {welche Seiten/Kategorien} |
+| Social Links | {ja/nein, welche Plattformen} |
+| Newsletter | {ja/nein} |
+| Copyright | {text} |
+| Zusätzlich | {Adresse, Telefon, etc.} |
+
+⚠️ **WICHTIG - Footer ≠ Contact Section!**
+- **Contact Section:** Kontaktformular, Google Map, detaillierte Kontakt-Infos, Öffnungszeiten (Content)
+- **Footer:** Navigation Links, Copyright, Social Icons, Newsletter Signup (Layout)
+- **BEIDES** muss spezifiziert und implementiert werden - **SEPARAT**!
+
+**Layout-Komponenten Specs bestätigen?**"
+
 ### 3. Für jede Seite: Spec generieren
 
 #### 3.1 SEO Specification
