@@ -1,100 +1,17 @@
 {
   "$schema": "./schemas/workflow-state.schema.json",
   "version": "3.0.0",
-  "currentStep": 6,
+  "currentStep": 1,
   "steps": [
-    {
-      "id": 1,
-      "name": "Init Project",
-      "command": "/init-project",
-      "status": "completed",
-      "summary": "Onepager für Zahnarztpraxis Dr. Mirjam Gaggl, Dielsdorf. 7 Sektionen, Modern & Clean Design, Warm & Einladend",
-      "completedAt": "2026-01-09"
-    },
-    {
-      "id": 2,
-      "name": "Content Plan",
-      "command": "/content-plan",
-      "status": "completed",
-      "summary": "7 Sektionen geplant: Hero, Über uns, 13 Services, 10 Team, 3 Features, CTA, Kontakt. Alle Bilder = Placeholder",
-      "completedAt": "2026-01-09"
-    },
-    {
-      "id": 3,
-      "name": "Design System",
-      "command": "/design-system",
-      "status": "completed",
-      "summary": "Space Grotesk + Inter, Sage Green + Warm Gold, Off-White/Cream Background, Rounded, Subtle Animations",
-      "completedAt": "2026-01-09"
-    },
-    {
-      "id": 4,
-      "name": "Shape Pages",
-      "command": "/shape-pages",
-      "status": "completed",
-      "summary": "Home-Page mit 7 Sektionen gestaltet. Design Excellence Score: 7.6/10. Asymmetrische Layouts, Sage Green CTA, Portrait-Grid Team",
-      "completedAt": "2026-01-09"
-    },
-    {
-      "id": 5,
-      "name": "Write Spec",
-      "command": "/write-spec",
-      "status": "completed",
-      "summary": "7 Custom Sections spezifiziert. SEO: LocalBusiness Schema, Keywords, Headings. TypeScript Props für alle Components.",
-      "completedAt": "2026-01-09"
-    },
-    {
-      "id": 6,
-      "name": "Implement",
-      "command": "/implement",
-      "status": "pending",
-      "summary": null,
-      "completedAt": null
-    },
-    {
-      "id": 7,
-      "name": "SEO",
-      "command": "/seo",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null
-    },
-    {
-      "id": 8,
-      "name": "Refine",
-      "command": "/refine",
-      "status": "locked",
-      "optional": true,
-      "summary": null,
-      "completedAt": null
-    },
-    {
-      "id": 9,
-      "name": "Verify & Export",
-      "command": "/verify",
-      "status": "locked",
-      "summary": null,
-      "completedAt": null
-    }
+    { "id": 1, "name": "Init Project", "command": "/init-project", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 2, "name": "Content Plan", "command": "/content-plan", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 3, "name": "Design System", "command": "/design-system", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 4, "name": "Shape Pages", "command": "/shape-pages", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 5, "name": "Write Spec", "command": "/write-spec", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 6, "name": "Implement", "command": "/implement", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 7, "name": "SEO", "command": "/seo", "status": "pending", "summary": null, "completedAt": null },
+    { "id": 8, "name": "Refine", "command": "/refine", "status": "locked", "optional": true, "summary": null, "completedAt": null },
+    { "id": 9, "name": "Verify & Export", "command": "/verify", "status": "locked", "summary": null, "completedAt": null }
   ],
-  "history": [
-    {
-      "step": 1,
-      "action": "completed",
-      "timestamp": "2026-01-09",
-      "details": "Projekt initialisiert basierend auf bestehender Website zahnarzt-dielsdorf.ch"
-    },
-    {
-      "step": 3,
-      "action": "completed",
-      "timestamp": "2026-01-09",
-      "details": "Design System erstellt: Modern Typography, Sage Green + Gold, Off-White Background"
-    },
-    {
-      "step": 2,
-      "action": "completed",
-      "timestamp": "2026-01-09",
-      "details": "Content Plan für 7 Sektionen erstellt, alle Bilder als Placeholder definiert"
-    }
-  ]
+  "history": []
 }
