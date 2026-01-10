@@ -2,47 +2,16 @@
   "$schema": "./schemas/project.schema.json",
   "version": "1.0.0",
   "name": "",
-  "brand": {
-    "name": "",
-    "tagline": "",
-    "industry": "",
-    "values": [],
-    "voice": { "tone": "", "personality": [] },
-    "usps": [],
-    "contact": { "address": "", "city": "", "country": "", "phone": "", "email": "" }
-  },
-  "audience": {
-    "primary": "",
-    "demographics": { "age": "", "location": "" },
-    "archetypes": [],
-    "problems": [],
-    "needs": [],
-    "goals": []
-  },
+  "brand": {},
+  "audience": {},
   "type": "",
   "pages": [],
-  "features": {
-    "blog": false,
-    "commerce": false,
-    "auth": false,
-    "contactForm": false,
-    "newsletter": false,
-    "analytics": false,
-    "darkMode": false,
-    "booking": false,
-    "stickyNav": false,
-    "scrollAnimations": false,
-    "googleMaps": false
-  },
-  "designPreferences": {
-    "style": "",
-    "colorPreferences": [],
-    "typography": { "style": "", "headings": "" },
-    "characteristics": [],
-    "mood": "",
-    "inspirationAnalyzed": false,
-    "inspirations": { "general": [], "sections": {}, "analysis": {} }
-  },
-  "existingWebsite": { "url": "", "analyzed": false },
-  "status": { "currentPhase": "", "completedPhases": [], "lastUpdated": "" }
+  "features": {},
+  "designPreferences": {},
+  "contact": {},
+  "status": {
+    "currentPhase": "",
+    "completedPhases": [],
+    "lastUpdated": ""
+  }
 }

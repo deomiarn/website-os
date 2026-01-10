@@ -36,7 +36,7 @@ Falls **Ja**, gib mir die URL:"
 
 1. **Website fetchen:**
    - **Primär:** WebFetch Tool verwenden
-   - **Fallback bei 403:** Playwright MCP (manche Websites blockieren Bots)
+   - **Fallback bei 403:** browser_eval MCP (manche Websites blockieren Bots)
 
 2. **Content analysieren** (Styling ist egal, nur Inhalt zählt):
    - Brand Name, Tagline (aus Header/Logo/Title)
