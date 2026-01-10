@@ -3,15 +3,15 @@
   "version": "3.0.0",
   "currentStep": 1,
   "steps": [
-    { "id": 1, "name": "Init Project", "command": "/init-project", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 2, "name": "Content Plan", "command": "/content-plan", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 3, "name": "Design System", "command": "/design-system", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 4, "name": "Shape Pages", "command": "/shape-pages", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 5, "name": "Write Spec", "command": "/write-spec", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 6, "name": "Implement", "command": "/implement", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 7, "name": "SEO", "command": "/seo", "status": "pending", "summary": null, "completedAt": null },
-    { "id": 8, "name": "Refine", "command": "/refine", "status": "locked", "optional": true, "summary": null, "completedAt": null },
-    { "id": 9, "name": "Verify & Export", "command": "/verify", "status": "locked", "summary": null, "completedAt": null }
+    { "id": 1, "name": "Init Project", "command": "/init-project", "status": "pending" },
+    { "id": 2, "name": "Content Plan", "command": "/content-plan", "status": "locked" },
+    { "id": 3, "name": "Design System", "command": "/design-system", "status": "locked" },
+    { "id": 4, "name": "Shape Pages", "command": "/shape-pages", "status": "locked" },
+    { "id": 5, "name": "Write Spec", "command": "/write-spec", "status": "locked" },
+    { "id": 6, "name": "Implement", "command": "/implement", "status": "locked" },
+    { "id": 7, "name": "SEO", "command": "/seo", "status": "locked" },
+    { "id": 8, "name": "Refine", "command": "/refine", "status": "locked", "optional": true },
+    { "id": 9, "name": "Verify & Export", "command": "/verify", "status": "locked" }
   ],
   "history": []
 }

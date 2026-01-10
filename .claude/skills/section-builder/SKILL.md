@@ -490,3 +490,179 @@ Every section MUST have at least 3 of these:
 - [ ] Animations enhance, not distract
 - [ ] Accessible color contrast
 - [ ] Mobile-first responsive design
+
+---
+
+## 📦 shadcnblocks Integration
+
+Dieser Abschnitt beschreibt den Workflow für die Nutzung von shadcnblocks als Layout-Template.
+
+### Workflow
+
+1. **Download Component** (exakter Befehl aus page-shapes):
+   ```bash
+   pnpm dlx shadcn add @shadcnblocks/feature-grid-2
+   ```
+
+2. **Custom Styles entfernen** (siehe Checkliste unten)
+
+3. **Design System anwenden** (Design Tokens verwenden)
+
+4. **Container centern** (IMMER `mx-auto max-w-7xl`)
+
+5. **Playwright Screenshot + AI-Analyse** gegen Style-Bild
+
+### Setup-Anforderungen
+
+**components.json Registry:**
+```json
+{
+  "registries": {
+    "@shadcnblocks": {
+      "url": "https://shadcnblocks.com/r/{name}",
+      "headers": {
+        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+**Environment Variable:**
+```bash
+export SHADCNBLOCKS_API_KEY=your_api_key_here
+```
+
+---
+
+## 🔄 Custom Styles Entfernen - Checkliste
+
+Bei JEDER shadcnblocks-Component müssen diese Styles entfernt/ersetzt werden:
+
+| Entfernen | Ersetzen mit |
+|-----------|--------------|
+| `text-3xl`, `text-4xl` etc. auf h1/h2 | `font-display text-4xl` aus Design Tokens |
+| `text-gray-600`, `text-slate-500` | `text-muted-foreground` |
+| `bg-white`, `bg-gray-50` | `bg-background`, `bg-muted` |
+| `text-blue-600`, `text-indigo-500` | `text-primary` |
+| `font-semibold`, `font-medium` | Design Token Weights |
+| `py-12`, `py-16` | Minimum `py-24`, bevorzugt `py-32` |
+| `gap-4`, `gap-6` | Minimum `gap-8` |
+| `rounded-lg` | `rounded-xl` oder `rounded-2xl` |
+| Inline `style={}` | Tailwind Classes |
+| `max-w-6xl`, `max-w-5xl` | `max-w-7xl` (Standard Container) |
+
+### Container Centering (PFLICHT)
+
+Alle Container MÜSSEN zentriert sein:
+```tsx
+// ✅ RICHTIG
+<div className="container mx-auto max-w-7xl px-4">
+
+// ❌ FALSCH
+<div className="max-w-6xl">
+<div className="container">  // ohne mx-auto
+```
+
+---
+
+## 📊 Layout-Empfehlungslogik
+
+Statt Fragen zu stellen, gibt der Workflow Empfehlungen basierend auf Content-Menge:
+
+### Features/Services
+
+| Anzahl Items | Empfohlenes Layout |
+|--------------|-------------------|
+| 3-4 | Horizontal Row oder 2x2 Grid |
+| 5-6 | Grid 3x2 oder 2x3 |
+| 7-9 | Grid 3x3 |
+| 10-12 | Grid 4x3 oder 3x4 |
+| 13+ | Grid 4x4 oder Bento mit Pagination |
+
+**Responsive Breakpoints:**
+- Desktop (lg): Max 4 Spalten
+- Tablet (md): Max 3 Spalten
+- Mobile: Max 2 Spalten
+
+### Team
+
+| Anzahl Members | Empfohlenes Layout |
+|----------------|-------------------|
+| 1-2 | Side-by-side oder Featured |
+| 3-4 | Grid 2x2 oder 4x1 Row |
+| 5-6 | Featured Lead + Grid 4x1 darunter |
+| 7+ | Grid 4x2 oder Carousel |
+
+### Testimonials
+
+| Anzahl | Empfohlenes Layout |
+|--------|-------------------|
+| 1 | Single Quote, zentriert, gross |
+| 2-3 | 3-Column Grid |
+| 4+ | Carousel oder Masonry |
+
+### Pricing
+
+| Anzahl Plans | Empfohlenes Layout |
+|--------------|-------------------|
+| 2 | Side-by-side, einer highlighted |
+| 3 | 3-Column, mittlerer highlighted |
+| 4+ | Carousel oder Comparison Table |
+
+### Beispiel-Output (Shape-Pages Phase 1)
+
+```
+════════════════════════════════════════════════════════════════
+                    PAGE OVERVIEW: HOME
+════════════════════════════════════════════════════════════════
+
+┌───────────────────────────────────────────────────────────────┐
+│ 1. HERO                                                       │
+│ Split-Layout mit Text links, grossem Bild rechts.             │
+│ Volle Viewport-Höhe, sofort sichtbarer CTA.                   │
+└───────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────┐
+│ 2. SERVICES (12 Items)                                        │
+│ Grid mit Icon-Cards. 4 Spalten Desktop, 2 Mobile.             │
+│ Jede Card: Icon + Titel + kurze Beschreibung.                 │
+└───────────────────────────────────────────────────────────────┘
+
+... weitere Sections ...
+
+════════════════════════════════════════════════════════════════
+```
+
+---
+
+## 🎯 Playwright Screenshot + AI-Analyse
+
+Nach jeder Section-Implementation:
+
+1. **Screenshot erstellen:**
+   ```
+   mcp__playwright__browser_navigate → URL
+   mcp__playwright__browser_take_screenshot → fullPage: false, element spezifisch
+   ```
+
+2. **AI-Analyse gegen Style-Bild:**
+   - Layout-Vergleich: Stimmt Grid/Spalten?
+   - Spacing-Vergleich: Ähnliche Abstände?
+   - Proportionen: Cards/Elemente ähnlich gross?
+   - Typografie: Headlines/Body ähnliche Hierarchie?
+
+3. **Feedback geben:**
+   ```
+   ✓ Layout passt (4x3 Grid wie im Bild)
+   ✗ Cards zu eng → gap-8 auf gap-12 erhöhen
+   ✗ Headlines zu klein → text-3xl auf text-4xl
+   ```
+
+4. **Iterieren bis Match**
+
+### Wichtig bei Style-Bild Analyse
+
+- Das Bild zeigt den GEWÜNSCHTEN Style, nicht die exakte Anzahl Items
+- Beispiel: Bild zeigt 6 Cards → Du implementierst trotzdem für 12 wenn das der Content ist
+- Nur Layout, Spacing, Proportionen übernehmen - NICHT die Farben/Fonts (die kommen aus Design Tokens)

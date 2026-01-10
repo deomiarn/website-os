@@ -1,12 +1,12 @@
 ---
 name: implement
-description: Implementiert die Website Page by Page mit Custom Sections basierend auf Inspirationen und User Code
+description: Implementiert die Website mit shadcnblocks Components, angepasst nach Style-Bildern
 args: "[page-name]"
 ---
 
 # Implement
 
-Implementiere die Website Page by Page mit Custom Sections und Validierung.
+Implementiere die Website mit shadcnblocks Components + Style-Bild Anpassung + Playwright Verifikation.
 
 ## Usage
 
@@ -52,13 +52,21 @@ Die Skills enthalten die Design-Philosophie und Quality-Standards die EINGEHALTE
 
 ## Anweisung
 
-Du führst jetzt den **Implement** Workflow durch - **Page by Page mit Custom Sections**.
+Du führst jetzt den **Implement** Workflow durch mit **shadcnblocks Components**.
 
-**WICHTIG:** Es gibt KEINE vorgefertigten Templates. Jede Section wird **custom** erstellt basierend auf:
-1. Spezifikationen aus `/write-spec`
-2. User-Inspirationen
-3. User Code-Snippets (falls vorhanden)
-4. Design Tokens
+**NEUER WORKFLOW:**
+Jede Section wird implementiert mit:
+1. **shadcnblocks Download** - Exakter Befehl aus page-shapes
+2. **Custom Styles entfernen** - Keine h1/h2 Styles, Farben von shadcnblocks
+3. **Design System anwenden** - Fonts, Farben, Spacing aus Design Tokens
+4. **Container centern** - IMMER `mx-auto max-w-7xl`
+5. **Playwright Screenshot + AI-Analyse** - Gegen Style-Bild vergleichen
+6. **Iterieren bis Match** - Anpassen bis es wie im Bild aussieht
+
+**KRITISCH:**
+- shadcnblocks = Layout-Template (Struktur übernehmen)
+- Style-Bild = Finaler Look (Layout, Spacing, Proportionen)
+- Design Tokens = Farben, Fonts (NICHT aus Component/Bild!)
 
 ### 1. Kontext laden
 
@@ -323,50 +331,145 @@ Laut Spec werden diese Custom Sections benötigt:
 
 Los geht's?"
 
-#### 4.2 Section für Section (5-Step Quality Process)
+#### 4.2 Section für Section (6-Step shadcnblocks Process)
 
-**⚠️ KRITISCH: Für JEDE Section den 5-Step Process durchlaufen!**
-
----
-
-##### 🔷 STEP 1: Inspiration Reference
-
-"**Section: {name} - Inspiration Check**
-
-**Welche Inspiration passt zu dieser Section?**
-- Datei: `{inspiration-filename}`
-- Mood: {mood aus Analyse}
-- Key Elements: {elements die übernommen werden}
-
-**Aus dieser Inspiration übernehme ich:**
-1. {element1 - z.B. "Asymmetrisches Grid-Layout"}
-2. {element2 - z.B. "Warme Beige-Töne als Hintergrund"}
-3. {element3 - z.B. "Elegante Serif-Headlines"}"
+**⚠️ KRITISCH: Für JEDE Section den 6-Step Process durchlaufen!**
 
 ---
 
-##### 🔷 STEP 2: frontend-design Philosophie anwenden
+##### 🔷 STEP 1: shadcnblocks Download
 
-"**Design-Entscheidungen für {section}:**
+Hole den Download-Befehl aus page-shapes und führe ihn aus:
 
-| Aspekt | Entscheidung | Warum |
-|--------|--------------|-------|
-| **Background** | {nicht plain white!} | {z.B. "Gradient mesh für Atmosphere"} |
-| **Typography** | {distinctive font} | {z.B. "Fraunces für Editorial-Feel wie Inspiration"} |
-| **Spacing** | py-{32/48} | {z.B. "Generous whitespace wie in Inspiration"} |
-| **Layout** | {asymmetric/layered} | {z.B. "Overlapping elements für Tiefe"} |
-| **Colors** | {dominant + accent} | {z.B. "Beige dominant, Dark green accent"} |
+"**Section: {name} - Component Download**
 
-**Distinctive Elements (mindestens 3):**
-1. {element1}
-2. {element2}
-3. {element3}"
+```bash
+# Aus page-shapes/{page}.json
+{downloadCommand aus shadcnblocks.downloadCommand}
+# z.B.: pnpm dlx shadcn add @shadcnblocks/feature-grid-2
+```
+
+Component heruntergeladen. Jetzt Custom Styles entfernen."
 
 ---
 
-##### 🔷 STEP 3: Code Implementation
+##### 🔷 STEP 2: Custom Styles entfernen (PFLICHT!)
 
-Jetzt erst Code schreiben - MIT allen Design-Entscheidungen:
+**Diese Styles MÜSSEN ersetzt werden:**
+
+| Finden in Component | Ersetzen mit |
+|---------------------|--------------|
+| `text-3xl`, `text-4xl` auf h1/h2 | `font-display text-4xl` |
+| `text-gray-600`, `text-slate-500` | `text-muted-foreground` |
+| `bg-white`, `bg-gray-50` | `bg-background`, `bg-muted` |
+| `text-blue-600`, `text-indigo-500` | `text-primary` |
+| `font-semibold`, `font-medium` | Design Token Weights |
+| `py-12`, `py-16` | Minimum `py-24` |
+| `gap-4`, `gap-6` | Minimum `gap-8` |
+| `max-w-6xl`, `max-w-5xl` | `max-w-7xl` |
+| Inline `style={}` | Tailwind Classes |
+
+**Container Centering (PFLICHT):**
+```tsx
+// IMMER so:
+<div className="container mx-auto max-w-7xl px-4">
+```
+
+---
+
+##### 🔷 STEP 3: Design System anwenden
+
+Wende die Design Tokens aus `design-tokens.json` an:
+
+"**Design Tokens für {section}:**
+
+| Token | Wert | Anwendung |
+|-------|------|-----------|
+| font-display | {fontFamily} | Alle Headlines h1, h2, h3 |
+| font-body | {fontFamily} | Body text, descriptions |
+| --primary | {oklch Wert} | Accent elements, CTAs |
+| --muted-foreground | {oklch Wert} | Secondary text |
+| py-section | py-24 minimum | Section padding |
+| gap | gap-8 minimum | Grid/flex gaps |"
+
+---
+
+##### 🔷 STEP 4: Style-Bild Analyse
+
+Lade das Style-Bild aus page-shapes und analysiere:
+
+"**Style-Bild Analyse: {section}**
+
+Bild: `{styleReference.image}`
+Notizen: `{styleReference.notes}`
+
+**Aus dem Bild übernehmen (NUR Layout!):**
+- Grid-Struktur: {z.B. "4 Spalten"}
+- Spacing: {z.B. "Viel Whitespace zwischen Cards"}
+- Proportionen: {z.B. "Cards quadratisch"}
+- Hierarchie: {z.B. "Headline sehr gross"}
+
+**NICHT aus Bild (→ Design Tokens):**
+- Farben
+- Fonts
+- Genaue Schriftgrössen
+
+**Notiz vom User:**
+{styleReference.notes, z.B. "Bild zeigt 6, aber 12 implementieren"}"
+
+---
+
+##### 🔷 STEP 5: Playwright Screenshot + AI-Analyse
+
+Nach der Implementation Screenshot machen und vergleichen:
+
+"**Screenshot + Vergleich**
+
+```
+1. Dev Server starten (falls nicht)
+2. mcp__playwright__browser_navigate → http://localhost:3000#{section-id}
+3. mcp__playwright__browser_take_screenshot → Section screenshotten
+4. Vergleiche mit Style-Bild
+```
+
+**Analyse-Checkliste:**
+
+| Aspekt | Style-Bild | Implementation | Match? |
+|--------|------------|----------------|--------|
+| Grid/Spalten | {x} | {y} | ✓/✗ |
+| Spacing | {beschreibung} | {beschreibung} | ✓/✗ |
+| Proportionen | {beschreibung} | {beschreibung} | ✓/✗ |
+| Hierarchie | {beschreibung} | {beschreibung} | ✓/✗ |
+
+**Feedback:**
+```
+✓ Layout passt (4x3 Grid wie im Bild)
+✗ Cards zu eng → gap-8 auf gap-12 erhöhen
+✗ Headlines zu klein → text-3xl auf text-4xl
+```"
+
+---
+
+##### 🔷 STEP 6: Iterieren bis Match
+
+Falls Abweichungen:
+
+"**Anpassungen erforderlich:**
+
+1. {Anpassung 1}
+2. {Anpassung 2}
+
+*Führe Anpassungen durch...*
+
+**Neuer Screenshot...**
+
+{Wiederhole bis Match}
+
+**✓ Section {name} fertig - Match mit Style-Bild!**"
+
+---
+
+**WICHTIG:** Diesen 6-Step Process für JEDE Section durchlaufen. Keine Abkürzungen!
 
 ```tsx
 // components/sections/{SectionName}.tsx

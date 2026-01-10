@@ -1,11 +1,13 @@
 ---
 name: shape-pages
-description: Gestaltet Seiten interaktiv - Page by Page, Section by Section mit Custom Design basierend auf User-Inspirationen
+description: Gestaltet Seiten interaktiv - Page by Page, Section by Section mit shadcnblocks Components + Style-Bilder
 ---
 
 # Shape Pages
 
-Gestalte jede Seite interaktiv mit Custom Sections basierend auf User-Inspirationen und Code-Snippets.
+Gestalte jede Seite in 2 Phasen:
+1. **Phase 1: Page Overview** - Komplette Seiten-Struktur mit Layout-Empfehlungen
+2. **Phase 2: Section by Section** - shadcnblocks Component + Style-Bild pro Section
 
 ## Voraussetzungen
 
@@ -13,15 +15,20 @@ Prüfe dass Step 2 (Content Plan) und Step 3 (Design System) abgeschlossen sind.
 
 ## Anweisung
 
-Du führst jetzt den **Shape Pages** Workflow durch - **Page by Page, Section by Section**.
+Du führst jetzt den **Shape Pages** Workflow durch.
 
-**WICHTIG:** Es gibt KEINE vorgefertigten Templates. Jede Section wird **custom** erstellt basierend auf:
-1. Inspiration-Bilder des Users
-2. Code-Snippets die der User bereitstellt
-3. Design Tokens aus dem Design System
-4. Best Practices für die jeweilige Section-Art
+**NEUER WORKFLOW mit shadcnblocks:**
+1. Du zeigst erst die komplette Page-Struktur (Phase 1)
+2. User bestätigt oder passt an
+3. Dann gehst du Section für Section durch (Phase 2)
+4. Pro Section gibt der User: `@shadcnblocks/component-name` + Style-Bild
+5. Das Style-Bild bestimmt den Look, die Component nur das Layout
 
-**KRITISCH:** Jede Section muss den **Design Excellence Check** bestehen (Score >= 7/10).
+**WICHTIG:**
+- shadcnblocks Component = Layout-Template
+- Style-Bild = Finaler Look (nicht die Component-Styles!)
+- Design Tokens = Farben, Fonts, Spacing
+- **KEINE Fragen** wie "Wie viele Cards?" → Stattdessen **Empfehlungen** geben
 
 ### 1. Kontext Laden
 
@@ -122,51 +129,97 @@ Welche Seite möchtest du als nächstes gestalten?"
 
 Diese Informationen beeinflussen die Heading-Struktur und Content-Optimierung."
 
-### 4. Sections vorschlagen (MIT MINIMUM ENFORCEMENT)
+### 4. PHASE 1: Page Overview (ZUERST!)
 
-Basierend auf:
-- Seitentyp (Home, About, Services, etc.)
-- **Section-Standards (section-standards.json)**
-- Content-Inventory (Mengen aus content-inventory.json)
-- Branche und Zielgruppe
-- **Inspiration-Analyse** (Layout, Style, Patterns)
+**KRITISCH:** Zeige ZUERST die komplette Page-Struktur bevor du in Details gehst!
 
-**KRITISCH:** Prüfe section-standards.json:
+Basierend auf Content-Inventory zeige diese Übersicht:
 
-"**{Seitenname} - Section-Vorschlag**
+"**═══════════════════════════════════════════════════════════════
+                    PAGE OVERVIEW: {Seitenname}
+═══════════════════════════════════════════════════════════════**
 
-**Section-Standard für {pageType}:**
-- **Minimum:** {minimum} Sections ✓
-- **Empfohlen:** {recommended} Sections
-- **Pflicht:** {required[]}
+```
+┌───────────────────────────────────────────────────────────────┐
+│ NAVBAR                                                        │
+│ Sticky mit Logo links, Nav-Links, CTA-Button rechts.          │
+└───────────────────────────────────────────────────────────────┘
 
-Basierend auf deinen Inspirationen und dem Content-Plan empfehle ich **{count} Sections**:
+┌───────────────────────────────────────────────────────────────┐
+│ 1. HERO                                                       │
+│ {1-2 Sätze Layout-Beschreibung basierend auf Content}         │
+│ {z.B. "Split-Layout mit Text links, Bild rechts."}            │
+└───────────────────────────────────────────────────────────────┘
 
-| # | Section | Inspiration-Match | Design-Ansatz |
-|---|---------|-------------------|---------------|
-| 1 | Hero | `inspirations/sections/hero/` | Split-Layout wie in Inspiration |
-| 2 | Logos | - | Trust-Element, grayscale |
-| 3 | Features | `inspirations/general/bild2.jpg` | Grid mit Cards |
-| 4 | Testimonials | - | 3-spaltig mit Fotos |
-| 5 | FAQ | - | Accordion |
-| 6 | CTA | - | Gradient Background |
+┌───────────────────────────────────────────────────────────────┐
+│ 2. {SECTION-TYP} ({X} Items)                                  │
+│ {Layout-Empfehlung basierend auf Anzahl Items}                │
+│ {z.B. "Grid 4x3 mit Icon-Cards. 4 Spalten Desktop, 2 Mobile."} │
+└───────────────────────────────────────────────────────────────┘
 
-{Falls count < minimum}
-**⚠️ ACHTUNG:** Du hast nur {count} Sections. **Minimum ist {minimum}!**
+... weitere Sections basierend auf Content-Inventory ...
 
-Ich füge automatisch hinzu:
-{aus suggestedSections bis minimum erreicht}
+┌───────────────────────────────────────────────────────────────┐
+│ FOOTER                                                        │
+│ Simpel mit Logo, rechtlichen Links, Copyright.                │
+└───────────────────────────────────────────────────────────────┘
+```
 
-**Überarbeiteter Vorschlag mit {minimum}+ Sections:**
-[Aktualisierte Tabelle]
-{/Falls}
+**Empfehlungen basierend auf Content-Mengen:**
+{Nutze die Empfehlungslogik aus section-builder Skill}
 
-**Hast du Code-Snippets für bestimmte Sections?**
-Falls ja, teile sie und ich baue darauf auf.
+| Section | Items | Empfohlenes Layout |
+|---------|-------|-------------------|
+| Services | 12 | Grid 4x3 Desktop, 3x4 Tablet, 2x6 Mobile |
+| Team | 5 | Featured Lead + Grid 4x1 darunter |
+| Testimonials | 3 | 3-Column Grid |
 
-**Wichtig:** Die H1 sollte '{targetKeyword}' enthalten.
+**Du kannst jetzt:**
+- Reihenfolge ändern
+- Sections hinzufügen/entfernen
+- Layout-Beschreibungen anpassen
 
-Passt diese Struktur? Sections hinzufügen/entfernen?"
+**Passt die Struktur? Dann gehen wir Section für Section durch.**"
+
+### 4.5 PHASE 2: Section by Section mit shadcnblocks
+
+Erst NACH bestätigter Overview gehe jede Section einzeln durch:
+
+"**PHASE 2: Section Details**
+
+Für jede Section brauchst du:
+1. **shadcnblocks Component** - Download-Befehl (z.B. `@shadcnblocks/hero-1`)
+2. **Style-Bild** - Als Chat-Anhang
+
+Ich frage dich pro Section danach.
+
+---
+
+**Section 1: HERO**
+
+Layout-Empfehlung: Split mit Text links, Bild rechts, volle Viewport-Höhe.
+
+**Welche shadcnblocks Component + Style-Bild für Hero?**
+→ Beispiel: `@shadcnblocks/hero-1` + [Bild anhängen]"
+
+Bei Antwort des Users:
+
+"**Hero Section - Konfiguration**
+
+| Aspekt | Wert |
+|--------|------|
+| shadcnblocks | `{component}` |
+| Download | `pnpm dlx shadcn add {component}` |
+| Style-Bild | {gespeichert in inspirations/{page}/hero-style.jpg} |
+| Layout | {aus Overview} |
+
+**Deine Style-Notizen:**
+{Falls User Wünsche genannt hat, dokumentiere sie hier}
+{z.B. "Bild zeigt 6 Cards, implementiere aber für 12"}
+
+**Weiter zu Section 2?**"
+
+Wiederhole für jede Section.
 
 ### 5. Section-by-Section durchgehen (MIT DESIGN EXCELLENCE)
 
@@ -419,36 +472,37 @@ Nach allen Sections:
 
 ⚠️ **Contact Section und Footer sind SEPARATE Komponenten!**
 
-**Sections (Custom Design):**
-| # | Section | Design-Basis | Code-Snippet | Excellence Score |
-|---|---------|--------------|--------------|------------------|
-| 1 | Hero | Inspiration (Layout) + Tokens | {ja/nein} | {score}/10 ✓ |
-| 2 | Features | Custom | {ja/nein} | {score}/10 ✓ |
-| 3 | Testimonials | Custom | {ja/nein} | {score}/10 ✓ |
-| 4 | FAQ | Custom | {ja/nein} | {score}/10 ✓ |
-| 5 | CTA | Custom | {ja/nein} | {score}/10 ✓ |
+**Sections mit shadcnblocks:**
+| # | Section | shadcnblocks Component | Download Command | Style-Bild |
+|---|---------|------------------------|------------------|------------|
+| 1 | Hero | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+| 2 | Services | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+| 3 | Team | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+| 4 | About | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+| 5 | CTA | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+| 6 | Contact | `{component}` | `pnpm dlx shadcn add {component}` | ✓ |
+
+**Style-Bilder gespeichert in:**
+`webdesign-os/inspirations/{page}/`
 
 **Section-Standard Check:**
 - Minimum: {minimum} ✓
 - Aktuell: {count} Sections ✓
 
-**Design Excellence Average: {average}/10**
+**Style-Notizen pro Section:**
+{Falls User spezielle Wünsche hatte}
+- Hero: "Mehr Whitespace als im Bild"
+- Services: "Bild zeigt 6, aber 12 implementieren"
 
 **Heading-Struktur:**
 - H1: {heroHeadline}
-- H2: Features, Testimonials, FAQ
-- H3: Feature-Titel
+- H2: Services, Team, About, Contact
+- H3: Service-Titel, Team-Namen
 
 **Schema Markup:**
 - WebPage
 - FAQ (wenn FAQ-Section)
 - LocalBusiness (wenn Contact)
-
-**Inspirationen verwendet:**
-{Liste der verwendeten Inspiration-Dateien}
-
-**Code-Snippets verwendet:**
-{Liste der Sections mit User-Code}
 
 **Passt das so für {Seitenname}?**"
 
@@ -482,13 +536,37 @@ Vorschläge: {aus suggestedSections}
 ### 8. Speichern & Nächste Seite
 
 Bei Bestätigung (nur wenn Validation Gate bestanden):
-1. Speichere in `webdesign-os/config/pages.json` (mit Design-Details + SEO + Excellence Scores)
+1. Speichere in `webdesign-os/config/page-shapes/{seitenname}.json` mit shadcnblocks-Konfiguration
 2. Update `webdesign-os/config/workflow-state.json`
+
+**Neues page-shapes Schema (pro Section):**
+```json
+{
+  "id": "services",
+  "type": "services",
+  "order": 2,
+  "shadcnblocks": {
+    "component": "@shadcnblocks/feature-grid-2",
+    "downloadCommand": "pnpm dlx shadcn add @shadcnblocks/feature-grid-2"
+  },
+  "styleReference": {
+    "image": "inspirations/home/services-style.jpg",
+    "notes": "Bild zeigt 6 Cards, implementiere aber für 12. Mehr Whitespace."
+  },
+  "layoutRecommendation": "Grid 4x3 Desktop, 3x4 Tablet, 2x6 Mobile",
+  "design": { ... },
+  "content": { ... }
+}
+```
 
 "**{Seitenname} gespeichert!**
 
+- shadcnblocks Components: {anzahl} konfiguriert
+- Style-Bilder: {anzahl} gespeichert
+- Download-Commands: Bereit für Implementation
+
 Fortschritt:
-- [x] Home - {anzahl} Sections (Custom) - Excellence: {score}/10
+- [x] Home - {anzahl} Sections mit shadcnblocks ✓
 - [ ] About - Pending
 
 **Nächste Seite gestalten oder alle fertig?**"
