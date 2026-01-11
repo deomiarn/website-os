@@ -56,6 +56,29 @@ Lese:
 - Analysiere sie mit Claude Vision falls noch nicht geschehen
 - Extrahiere Layout-Patterns, Styles, Strukturen
 
+### 1.3 UI UX Pro Max UX Guidelines (NEU)
+
+**Lade relevante UX Best Practices aus UI UX Pro Max:**
+
+```bash
+# UX Guidelines für die aktuelle Section
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "hero section" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "landing page" --domain landing
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "accessibility" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "animation" --domain ux
+```
+
+**Nutze diese Guidelines während des Shape-Prozesses:**
+- Bei Hero: Landing Page Best Practices
+- Bei Forms: UX Guidelines für Input-Felder
+- Bei Navigation: Accessibility Guidelines
+- Bei Animationen: Performance & Motion Guidelines
+
+**Die Guidelines werden KOMBINIERT mit:**
+1. User Inspirations (höchste Priorität für Layout)
+2. Design Tokens (höchste Priorität für Component-Styles)
+3. UI UX Pro Max (Best Practices & Anti-Patterns)
+
 ### 1.5 Section Standards prüfen (KRITISCH)
 
 Lade `section-standards.json` und bestimme für die gewählte Seite:

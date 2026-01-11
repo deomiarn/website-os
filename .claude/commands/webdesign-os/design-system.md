@@ -38,6 +38,43 @@ Speichere Analyse in `webdesign-os/config/inspiration-analysis.json`.
 
 Nutze diese Analyse für die Empfehlungen in den folgenden Fragen.
 
+### 2.5 UI UX Pro Max Empfehlungen (NEU)
+
+**Nach der Inspiration-Analyse, hole Empfehlungen aus UI UX Pro Max:**
+
+```bash
+# 1. Product-Type Empfehlungen basierend auf Branche
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "{branche} {projektTyp}" --domain product
+
+# 2. Style-Empfehlungen basierend auf Mood
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "{styleKeywords}" --domain style
+
+# 3. Typography-Empfehlungen
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "{styleKeywords}" --domain typography
+
+# 4. Color-Palette Empfehlungen
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "{branche}" --domain color
+```
+
+**Zeige dem User die Empfehlungen:**
+
+"**UI UX Pro Max Empfehlungen für {branche}:**
+
+| Aspekt | Empfehlung | Quelle |
+|--------|------------|--------|
+| **Style** | {style aus search} | UI UX Pro Max |
+| **Colors** | {palette aus search} | UI UX Pro Max |
+| **Typography** | {fonts aus search} | UI UX Pro Max |
+| **Aus Inspirations** | {patterns aus Bildern} | Claude Vision |
+
+**Diese Empfehlungen informieren die folgenden Fragen.**
+**Du entscheidest final - dies sind nur Vorschläge!**"
+
+**WICHTIG:**
+- Die Empfehlungen sind VORSCHLÄGE, nicht automatische Übernahmen
+- User-Entscheidung hat immer Vorrang
+- Inspirations-Bilder haben Vorrang vor generischen Empfehlungen
+
 ### 3. Interaktive Fragen
 
 Stelle die folgenden Fragen nacheinander. Gib bei jeder Frage eine Empfehlung basierend auf:

@@ -11,6 +11,42 @@ Starte ein neues Website-Projekt mit WebDesign-OS.
 
 Du führst jetzt den **Project Initialization** Workflow durch.
 
+### 0. GSD Integration Check (NEU)
+
+**Prüfe ZUERST ob GSD verwendet wurde:**
+
+```bash
+# Prüfe ob PROJECT.md existiert
+ls .planning/PROJECT.md 2>/dev/null
+```
+
+**Falls `.planning/PROJECT.md` existiert:**
+
+"Ich sehe, dass du bereits `/gsd:new-project` verwendet hast!
+
+Ich übernehme die Infos aus **PROJECT.md** für WebDesign-OS:
+
+| GSD | WebDesign-OS |
+|-----|--------------|
+| Vision | Brand Tagline |
+| Target Users | Audience |
+| Core Features | Pages + Features |
+| Tech Stack | Framework Selection |
+
+**Soll ich die Daten übernehmen oder neu erfragen?**"
+
+Bei Übernahme:
+- Lese `.planning/PROJECT.md`
+- Extrahiere relevante Felder
+- Überspringe entsprechende Questionnaire-Fragen
+- Frage nur was fehlt (Design-Präferenzen, spezifische Seiten)
+
+**Falls keine PROJECT.md existiert:**
+- Weise auf GSD hin: "Tipp: Für komplexe Projekte kannst du zuerst `/gsd:new-project` für tiefes Context-Gathering nutzen."
+- Fahre mit normalem Questionnaire fort
+
+---
+
 ### 1. Begrüßung
 
 Begrüße den Benutzer und erkläre kurz den Prozess:
