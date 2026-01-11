@@ -13,199 +13,149 @@ WebDesign-OS löst das Problem generischer AI-Designs. Durch klare Standards, ei
 - **Design Excellence** - Hochwertige visuelle Gestaltung nach deinen Vorstellungen
 - **Performance** - Page Speed + Core Web Vitals optimiert
 - **SEO** - Von Grund auf SEO-ready (Schema Markup, Metadata, Sitemaps)
-- **Flexibilität** - Optional: Blog (Sanity), E-Commerce (MedusaJS), Auth (Supabase), Payments (Stripe)
+- **GSD Integration** - Strukturierter Workflow mit Get Shit Done (GSD)
 
 ## Quick Start
 
 ```bash
-# 1. Repository klonen (falls noch nicht geschehen)
-git clone <repo-url> && cd webdesign-os
+# 1. Repository klonen
+git clone <repo-url>
+cd webdesign-os
 
-# 2. In Claude Code öffnen
-claude
+# 2. GSD installieren (einmalig)
+npx get-shit-done-cc
 
-# 3. Projekt starten
-/init-project
+# 3. Dashboard starten (optional)
+cd webdesign-os/dashboard && npm install && npm run dev
+
+# 4. In Claude Code öffnen
+cd .. && claude
+
+# 5. Workflow starten
+/gsd:map-codebase
 ```
 
-## Workflow (9 Phasen)
+## GSD Workflow (8 Phasen)
 
+WebDesign-OS nutzt [GSD (Get Shit Done)](https://github.com/cyanheads/get-shit-done) für strukturierte Projekt-Ausführung.
+
+### Projekt initialisieren
+
+```bash
+# Schritt 1: Codebase analysieren
+/gsd:map-codebase
+
+# Schritt 2: Projekt-Details erfassen (interaktiv)
+/gsd:new-project
+
+# Schritt 3: Roadmap erstellen (8 WebDesign-OS Phasen)
+/gsd:create-roadmap
 ```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  Step 1       Step 2         Step 3          Step 4        Step 5                   │
-│  ───────      ──────         ──────          ──────        ──────                   │
-│  /init     →  /content-plan → /design-system → /shape-pages → /write-spec           │
-│  project                                                                             │
-│                                                                                      │
-│  Step 6       Step 7         Step 8          Step 9                                 │
-│  ──────       ──────         ──────          ──────                                 │
-│  /implement → /seo         → /refine       → /verify                                │
-│                              (optional)                                              │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+
+### Phase ausführen
+
+Pro Phase immer diese Sequenz:
+
+```bash
+# Plan erstellen
+/gsd:plan-phase N    # N = 1-8
+
+# Plan ausführen
+/gsd:execute-plan
+
+# Context leeren (wichtig!)
+/clear
 ```
 
-### Phase 1: `/init-project`
-Interaktives Questionnaire für Projekt-Setup:
-- Brand Info (Name, Tagline, Branche)
-- Zielgruppe (Wer, Probleme, Bedürfnisse)
-- Website-Typ (Corporate, Portfolio, Landing Page, SaaS)
-- Benötigte Seiten
-- Features (Blog, E-Commerce, Auth, Contact Form)
+### Die 8 Phasen
 
-→ Output: `config/project.json`, `config/integrations.json`
+| Phase | Name | Command | Output |
+|-------|------|---------|--------|
+| 1 | Content Planning | `/gsd:plan-phase 1` | `config/content-inventory.json` |
+| 2 | Design System | `/gsd:plan-phase 2` | `config/design-tokens.json` |
+| 3 | Shape Pages | `/gsd:plan-phase 3` | `config/page-shapes/*.json` |
+| 4 | Write Specs | `/gsd:plan-phase 4` | `specs/*.md` |
+| 5 | Implement | `/gsd:plan-phase 5` | Next.js Projekt in `exports/` |
+| 6 | SEO | `/gsd:plan-phase 6` | SEO-optimierte Seiten |
+| 7 | Refine | `/gsd:plan-phase 7` | Verfeinerte Seiten (optional) |
+| 8 | Verify & Export | `/gsd:plan-phase 8` | Production Build |
 
-### Phase 2: `/content-plan`
-Content-Planung pro Seite:
-- Headline-Längen
-- Feature/Testimonial/FAQ-Anzahlen
-- Bild-Verfügbarkeit
+> Detaillierte Phase-Definitionen: [`webdesign-os/WORKFLOW.md`](./WORKFLOW.md)
 
-→ Output: `config/content-inventory.json`
-
-### Phase 3: `/design-system`
-Generierung des kompletten Design Systems:
-- OKLCH Color Palette
-- Typography (Font-Pairing, Type Scale)
-- Spacing System
-- Animation Presets
-- shadcn Theme Customization
-
-→ Output: `config/design-tokens.json`, Tailwind Config
-
-### Phase 4: `/shape-pages`
-Seiten-Architektur planen mit **Custom Design**:
-- Inspirationen analysieren (Claude Vision)
-- Sections pro Seite festlegen
-- Design-Optionen basierend auf Inspirationen
-- User Code-Snippets integrieren
-- SEO Meta-Daten pro Seite
-
-→ Output: `config/pages.json`
-
-### Phase 5: `/write-spec`
-Detaillierte Spezifikation:
-- Custom Component-Breakdown pro Seite
-- Responsive-Verhalten dokumentieren
-- Animations/Interactions definieren
-- Edge Cases berücksichtigen
-- User Code Integration planen
-
-→ Output: `specs/[spec]/spec.md`
-
-### Phase 6: `/implement`
-Implementation mit **Custom Sections**:
-- Next.js Projekt Setup
-- shadcn/ui Installation + Theme
-- Custom Komponenten erstellen (basierend auf Inspiration)
-- User Code integrieren
-- Seiten implementieren
-- SEO Setup
-- Validation Checkpoints nach jeder Section
-
-→ Output: Funktionierendes Next.js Projekt
-
-### Phase 7: `/seo`
-SEO Verification & Refinement:
-- Meta Tags prüfen
-- Schema Markup validieren
-- Internal Links optimieren
-- Image SEO
-
-→ Output: SEO-optimierte Seiten
-
-### Phase 8: `/refine` (optional)
-Page-by-Page Refinement:
-- Layout-Anpassungen
-- Visual Tweaks
-- Content Updates
-- Animation-Änderungen
-
-→ Output: Verfeinerte Seiten
-
-### Phase 9: `/verify`
-Verification & Export:
-- Design-Review gegen Spec
-- Performance-Audit (Lighthouse)
-- SEO-Audit
-- Responsive-Test (Desktop/Tablet/Mobile)
-- Export-Generierung
-
-→ Output: `exports/[project-name]/`
-
-## Weitere Commands
+### Wichtige GSD Commands
 
 | Command | Beschreibung |
 |---------|--------------|
-| `/preview` | Startet Playwright Preview in 3 Viewports (Desktop, Tablet, Mobile) |
-| `/dashboard` | Öffnet Web Dashboard auf localhost:3333 |
-| `/validate` | Validiert implementierte Sections |
+| `/gsd:progress` | Zeigt aktuellen Fortschritt |
+| `/gsd:check-todos` | Offene Todos anzeigen |
+| `/gsd:resume-work` | Arbeit fortsetzen nach Pause |
+| `/gsd:add-todo` | Todo hinzufügen |
+
+## Dashboard
+
+Das Dashboard zeigt den aktuellen Workflow-Status visuell an:
+
+```bash
+cd webdesign-os/dashboard
+npm install
+npm run dev
+```
+
+Öffnet auf `http://localhost:3333`
+
+**Features:**
+- Step-by-Step Workflow Anzeige
+- GSD Commands zum Kopieren
+- Tipps und Warnungen pro Phase
+- Auto-Refresh alle 2 Sekunden
 
 ## Ordnerstruktur
 
 ```
 webdesign-os/
-├── config/                      # Projekt-Konfigurationen
-│   ├── project.json            # Haupt-Config (Brand, Zielgruppe, Features)
-│   ├── design-tokens.json      # Design System Tokens
-│   ├── pages.json              # Seiten-Struktur mit Design-Details
-│   ├── content-inventory.json  # Content-Mengen pro Seite
-│   ├── seo.json                # SEO Konfiguration
-│   ├── integrations.json       # Aktivierte Integrationen
-│   ├── inspiration-analysis.json # Analysierte Inspirationen
-│   └── workflow-state.json     # Aktueller Workflow-Status
+├── .claude/
+│   └── commands/
+│       └── gsd/                    # Lokale GSD Command Overrides
+│           ├── create-roadmap.md   # Erzwingt 8 WebDesign-OS Phasen
+│           └── plan-phase.md       # Liest aus WORKFLOW.md
 │
-├── inspirations/               # Inspiration-Bilder (Claude Vision analysiert)
-│   ├── general/                # Allgemeine Design-Inspiration
-│   ├── sections/               # Section-spezifische Inspiration
-│   │   ├── hero/
-│   │   ├── features/
+├── webdesign-os/
+│   ├── WORKFLOW.md                 # Phase-Definitionen (zentrale Quelle)
+│   ├── config/
+│   │   ├── project.json            # Projekt-Definition
+│   │   ├── design-tokens.json      # Design System (Phase 2)
+│   │   ├── content-inventory.json  # Content-Mengen (Phase 1)
+│   │   └── page-shapes/            # Seiten-Struktur (Phase 3)
+│   │
+│   ├── inspirations/               # Inspiration-Bilder
+│   │   ├── bild1.jpg
+│   │   ├── bild2.jpg
 │   │   └── ...
-│   └── pages/                  # Page-spezifische Inspiration
+│   │
+│   ├── specs/                      # Technische Specs (Phase 4)
+│   │   └── *.md
+│   │
+│   └── dashboard/                  # Web Dashboard (Next.js)
 │
-├── specs/                      # Spezifikationen
-│   └── [YYYY-MM-DD-spec-name]/
-│       ├── planning/
-│       └── spec.md
+├── exports/                        # Exportierte Projekte (Phase 5+)
+│   └── [project-name]/
 │
-├── standards/                  # Quality Standards (als Reference)
-│   ├── design/
-│   ├── code/
-│   └── seo/
-│
-├── dashboard/                  # Web Dashboard (Next.js)
-│   └── ...
-│
-└── exports/                    # Exportierte Projekte
-    └── [project-name]/
+└── .planning/                      # GSD generiert (nicht editieren)
+    ├── PROJECT.md
+    ├── ROADMAP.md
+    ├── STATE.md
+    └── phases/
 ```
 
-## Custom Sections (Keine Templates!)
+## Inspirationen bereitstellen
 
-**WebDesign-OS verwendet KEINE vorgefertigten Section Templates.**
-
-Stattdessen wird jede Section **custom** erstellt basierend auf:
-
-1. **User-Inspirationen** - Bilder in `inspirations/` werden mit Claude Vision analysiert
-2. **User Code-Snippets** - Du kannst eigenen Code einbringen der integriert wird
-3. **Design Tokens** - Farben, Typography, Spacing aus dem Design System
-4. **Best Practices** - Bewährte Patterns für Hero, Features, Testimonials, etc.
-
-### Inspirationen bereitstellen
-
-Lege Bilder in `webdesign-os/inspirations/`:
+**WICHTIG:** Lege Inspiration-Bilder in `webdesign-os/inspirations/` BEVOR du startest!
 
 ```
-inspirations/
-├── general/          # Allgemeine Stil-Inspiration
-│   ├── design1.png
-│   └── website-screenshot.jpg
-├── sections/
-│   ├── hero/        # Hero-Section Inspiration
-│   ├── features/    # Feature-Section Inspiration
-│   └── ...
-└── pages/
-    ├── home/        # Homepage Inspiration
-    └── ...
+webdesign-os/inspirations/
+├── bild1.jpg     # Allgemeine Stil-Inspiration
+├── bild2.png     # Website-Screenshot
+└── hero-ref.jpg  # Section-spezifische Inspiration
 ```
 
 **Claude analysiert automatisch:**
@@ -214,138 +164,60 @@ inspirations/
 - Typography-Stil
 - Spacing/Whitespace
 - UI Patterns
-- Animationen (wenn erkennbar)
 
-### Code-Snippets einbringen
+**Wichtig:** Inspirationen definieren **Layout**, nicht Farben/Fonts.
+Farben und Fonts kommen aus `design-tokens.json` (Phase 2).
 
-Du kannst Code-Snippets bereitstellen:
-- Direkt im Chat
-- Als Dateien
-- Als Links zu CodePen/Stackblitz/etc.
+## Custom Sections (Keine Templates!)
 
-**Unterstützte Formate:**
-- React/Next.js Components
-- Plain HTML/CSS
-- Tailwind CSS
-- Vue Components (werden konvertiert)
+**WebDesign-OS verwendet KEINE vorgefertigten Section Templates.**
 
-**Claude integriert den Code:**
-1. Konvertiert zu Next.js/React falls nötig
-2. Ersetzt hardcoded colors mit Design Tokens
-3. Fügt Framer Motion Animationen hinzu
-4. Macht responsive
-5. Optimiert Accessibility
+Jede Section wird **custom** erstellt basierend auf:
 
-## Agents
-
-| Agent | Beschreibung |
-|-------|--------------|
-| `project-initializer` | Interaktives Questionnaire für Projekt-Setup |
-| `content-planner` | Plant Content-Mengen pro Seite |
-| `design-architect` | Erstellt Design System basierend auf Brand + Inspirationen |
-| `page-architect` | Plant Seiten-Architektur mit Custom Sections |
-| `spec-writer` | Schreibt detaillierte Spezifikationen |
-| `implementer` | Implementiert Custom Sections nach Spec |
-| `verifier` | Verifiziert Implementation gegen Spec |
-
-## Skills
-
-| Skill | Beschreibung |
-|-------|--------------|
-| `design-system-creator` | OKLCH Colors, Typography, Spacing |
-| `section-builder` | Custom Hero, Features, Testimonials, CTAs |
-| `animation-library` | Framer Motion, Scroll Animations |
-| `responsive-patterns` | Mobile-first Responsive Design |
-| `seo-technical` | Schema Markup, Sitemaps, Meta Tags |
-| `nextjs-patterns` | Next.js 15 Best Practices |
-| `frontend-design` | Design Excellence Guidelines |
-| `seo-optimizer` | Content SEO Best Practices |
-| `component-validator` | TypeScript, Tokens, Responsive, A11y Checks |
-
-## Integrationen (Optional)
-
-### Blog (Sanity CMS)
-```json
-// config/integrations.json
-{
-  "blog": {
-    "enabled": true,
-    "provider": "sanity"
-  }
-}
-```
-
-### E-Commerce (MedusaJS)
-```json
-{
-  "commerce": {
-    "enabled": true,
-    "provider": "medusa"
-  }
-}
-```
-
-### Auth (Supabase)
-```json
-{
-  "auth": {
-    "enabled": true,
-    "provider": "supabase"
-  }
-}
-```
-
-### Payments (Stripe)
-```json
-{
-  "payments": {
-    "enabled": true,
-    "provider": "stripe"
-  }
-}
-```
-
-## Web Dashboard
-
-Das Dashboard zeigt den aktuellen Workflow-Status:
-
-```bash
-# Starten
-cd webdesign-os/dashboard
-npm install
-npm run dev
-
-# Oder via Command
-/dashboard
-```
-
-Öffnet auf `http://localhost:3333`
-
-**Features:**
-- Step-by-Step Workflow Anzeige
-- Commands zum Kopieren
-- Zusammenfassungen nach jedem Schritt
-- Mutable Steps (Edit Button)
-- Auto-Refresh alle 2 Sekunden
+1. **User-Inspirationen** - Bilder werden mit Claude Vision analysiert
+2. **User Code-Snippets** - Eigener Code kann integriert werden
+3. **Design Tokens** - Farben, Typography, Spacing aus dem Design System
+4. **shadcnblocks** - Als Basis-Komponenten (customized)
 
 ## Technology Stack
 
 - **Framework:** Next.js 15 (App Router)
-- **UI:** shadcn/ui + Tailwind CSS
+- **UI:** shadcn/ui + shadcnblocks + Tailwind CSS
 - **Colors:** OKLCH Color System
 - **Animations:** Framer Motion
-- **Preview:** Playwright
+- **Workflow:** GSD (Get Shit Done)
 - **CMS:** Sanity (optional)
 - **E-Commerce:** MedusaJS (optional)
-- **Auth:** Supabase (optional)
-- **Payments:** Stripe (optional)
 
 ## Quality Targets
 
 - **Lighthouse Score:** 90+ (alle Kategorien)
 - **Core Web Vitals:** Grün
 - **Accessibility:** WCAG AA
-- **SEO:** On-Page + Technical optimiert
+- **Design Excellence:** Score >= 7/10 pro Section
+
+## Troubleshooting
+
+### GSD Commands funktionieren nicht
+
+```bash
+# GSD neu installieren
+npx get-shit-done-cc
+```
+
+### Phase-Output fehlt
+
+Prüfe ob vorherige Phase abgeschlossen ist:
+```bash
+/gsd:progress
+```
+
+### Context zu voll
+
+Nach jeder Phase:
+```bash
+/clear
+```
 
 ## License
 
