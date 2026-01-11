@@ -16,96 +16,99 @@ interface GuidanceContent {
 const guidanceContent: Record<number, GuidanceContent> = {
   1: {
     tips: [
-      "Habe deine Brand-Infos bereit: Name, Tagline, Branche",
-      "Überlege welche Seiten du brauchst (Home, About, Services, Contact...)",
-      "Lege Inspiration-Bilder in webdesign-os/inspirations/ ab",
-      "GSD Option erstellt detailliertes PROJECT.md für besseren Context"
+      "Lege Inspiration-Bilder in webdesign-os/inspirations/ ab BEVOR du startest",
+      "map-codebase analysiert ~7 Aspekte deines Projekts (Stack, Architecture, etc.)",
+      "new-project stellt Fragen bis alles klar ist - nimm dir Zeit",
+      "create-roadmap nutzt WEBDESIGN-WORKFLOW.md für die 8 Phasen"
     ],
     warnings: [
-      "Je detaillierter deine Infos, desto besser das Ergebnis"
+      "Je detaillierter deine Antworten bei new-project, desto besser das Ergebnis"
     ],
-    success: "Projekt-Config erstellt. Content-Planung kann beginnen."
+    success: "PROJECT.md + ROADMAP.md erstellt. Phase 1 kann beginnen."
   },
   2: {
     tips: [
-      "Denke an realistische Content-Mengen für jede Seite",
-      "Features: Wie viele Services/Produkte zeigst du?",
-      "Testimonials: Hast du echte Kundenstimmen?",
-      "FAQs: Welche Fragen werden oft gestellt?"
+      "plan-phase 1 erstellt atomare Tasks für Content-Planung",
+      "execute-plan läuft in frischem Subagent (200k tokens)",
+      "Output: content-inventory.json mit allen Content-Definitionen"
     ],
     warnings: [
       "Zu viele Items pro Section können überladen wirken",
-      "Lieber weniger, dafür hochwertiger Content"
+      "Nach execute-plan: /clear für frischen Context"
     ],
-    success: "Content-Plan fertig. Das Design System berücksichtigt diese Mengen."
+    success: "content-inventory.json erstellt. Phase 2 (Design System) kann starten."
   },
   3: {
     tips: [
-      "UI UX Pro Max gibt Empfehlungen - du entscheidest final!",
-      "Deine Inspiration-Bilder haben höchste Priorität",
-      "Wähle max. 2 Fonts (Display + Body)",
-      "OKLCH Farben für bessere Accessibility"
+      "Phase 2 analysiert deine Inspiration-Bilder automatisch",
+      "Extrahiert Farben, Typography, Spacing",
+      "Output: design-tokens.json mit OKLCH Farben"
     ],
     warnings: [
       "Vermeide generische Fonts wie Inter für Headlines",
-      "Nicht zu viele Farben - 1 Primary + 1 Accent reicht"
+      "Nach execute-plan: /clear für frischen Context"
     ],
-    success: "Design Tokens generiert. Alle Komponenten nutzen diese Tokens."
+    success: "design-tokens.json erstellt. Phase 3 (Shape Pages) kann starten."
   },
   4: {
     tips: [
-      "Gib pro Section ein Style-Bild an",
-      "Das Bild zeigt das LAYOUT - nicht Component-Styles",
-      "Design Excellence Check muss >= 7/10 sein",
-      "shadcnblocks Components sind das Grundgerüst"
+      "Phase 3 definiert jede Seite Section für Section",
+      "shadcnblocks Components werden pro Section gewählt",
+      "Optional: Style-Referenz-Bild pro Section"
     ],
     warnings: [
       "Inspiration-Bilder = Layout, nicht Farben/Fonts",
-      "Farben/Fonts kommen aus deinen Design Tokens"
+      "Nach execute-plan: /clear für frischen Context"
     ],
-    success: "Alle Seiten designed. Specs können erstellt werden."
+    success: "page-shapes/*.json erstellt. Phase 4 (Specs) kann starten."
   },
   5: {
     tips: [
-      "Specs werden automatisch aus deinen Design-Entscheidungen generiert",
-      "Review jede Spec auf Vollständigkeit",
-      "Bei Unklarheiten: Nachfragen ist besser als raten"
+      "Phase 4 erstellt technische Specs pro Seite",
+      "Component Props, Responsive, Animations",
+      "Output: specs/*.md mit Implementierungs-Details"
     ],
-    success: "Technische Specs fertig. Implementation kann starten."
+    warnings: [
+      "Nach execute-plan: /clear für frischen Context"
+    ],
+    success: "specs/*.md erstellt. Phase 5 (Implement) kann starten."
   },
   6: {
     tips: [
-      "Nutze /gsd:plan-phase für atomare Tasks",
-      "Jeder Task läuft mit frischem Context (200k tokens)",
-      "Design Excellence wird pro Section validiert"
+      "Phase 5 baut jede Seite nach Spec",
+      "Design Excellence Check pro Section (>= 7/10)",
+      "Bei Score < 7: Section wird überarbeitet"
     ],
     warnings: [
-      "Bei Score < 7 wird die Section überarbeitet",
-      "Lass den Build-Prozess komplett durchlaufen"
+      "Längste Phase - kann mehrere execute-plan Durchläufe brauchen",
+      "Nach execute-plan: /clear für frischen Context"
     ],
-    success: "Alle Sections implementiert und validiert!"
+    success: "Alle Seiten implementiert und validiert!"
   },
   7: {
     tips: [
-      "Meta-Tags pro Seite definieren",
-      "Schema Markup für bessere Rich Snippets",
-      "Core Web Vitals im Blick behalten",
-      "Interne Verlinkung nicht vergessen"
+      "Phase 6 optimiert SEO pro Seite",
+      "Meta-Tags, Schema Markup, Sitemap",
+      "Output: SEO-optimierte Seiten"
     ],
-    success: "SEO-Optimierung abgeschlossen. Bereit für finale Checks."
+    warnings: [
+      "Nach execute-plan: /clear für frischen Context"
+    ],
+    success: "SEO-Optimierung abgeschlossen. Phase 7 oder 8 als nächstes."
   },
   8: {
     tips: [
-      "Dieser Step ist optional",
-      "Nutze ihn für Feinschliff nach User-Feedback",
-      "Einzelne Sections können angepasst werden"
-    ]
+      "Phase 7 ist OPTIONAL",
+      "Nutze für Feinschliff nach Feedback",
+      "Kann übersprungen werden"
+    ],
+    success: "Refinements abgeschlossen."
   },
   9: {
     tips: [
-      "Alle Quality-Checks werden durchgeführt",
-      "Lighthouse Score sollte 90+ sein",
-      "Export generiert produktionsreifes Projekt"
+      "Phase 8 ist der finale Quality Check",
+      "Lighthouse Score >= 90 in allen Kategorien",
+      "Responsive Tests auf allen Viewports"
     ],
     success: "Projekt verifiziert und exportiert. Bereit für Deployment!"
   }

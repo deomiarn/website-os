@@ -2,13 +2,82 @@
   "$schema": "./schemas/project.schema.json",
   "version": "1.0.0",
   "name": "",
-  "brand": {},
-  "audience": {},
-  "type": "",
+  "type": "website",
+
+  "brand": {
+    "name": "",
+    "tagline": "",
+    "industry": "",
+    "values": [],
+    "tone": ""
+  },
+
+  "existingWebsite": {
+    "hasWebsite": false,
+    "url": "",
+    "whatToKeep": [],
+    "whatToChange": [],
+    "competitors": []
+  },
+
+  "audience": {
+    "primary": {
+      "description": "",
+      "ageRange": "",
+      "location": ""
+    },
+    "secondary": {
+      "description": ""
+    },
+    "painPoints": [],
+    "goals": [],
+    "objections": []
+  },
+
   "pages": [],
-  "features": {},
-  "designPreferences": {},
-  "contact": {},
+
+  "features": {
+    "contactForm": false,
+    "newsletter": false,
+    "blog": false,
+    "multiLanguage": false,
+    "darkMode": false,
+    "animations": "subtle",
+    "other": []
+  },
+
+  "designPreferences": {
+    "style": "",
+    "mood": [],
+    "avoidStyles": [],
+    "inspirationImages": [],
+    "colorPreferences": {
+      "liked": [],
+      "disliked": []
+    }
+  },
+
+  "content": {
+    "hasRealContent": false,
+    "hasRealImages": false,
+    "contentSource": "",
+    "imageSource": ""
+  },
+
+  "technical": {
+    "hosting": "",
+    "domain": "",
+    "analytics": false,
+    "cookieConsent": false
+  },
+
+  "contact": {
+    "email": "",
+    "phone": "",
+    "address": "",
+    "social": {}
+  },
+
   "status": {
     "currentPhase": "",
     "completedPhases": [],
