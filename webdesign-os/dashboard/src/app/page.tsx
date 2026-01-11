@@ -1,7 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Check, Circle, ArrowRight, Pencil, RefreshCw, ChevronDown, ChevronUp, FileText, Copy, CheckCheck } from "lucide-react"
+import { RefreshCw, Settings } from "lucide-react"
+import { Sidebar } from "@/components/Sidebar"
+import { StepDetail } from "@/components/StepDetail"
+import { GuidancePanel } from "@/components/GuidancePanel"
+import { InspirationsPreview } from "@/components/previews/InspirationsPreview"
+import { DesignTokensPreview } from "@/components/previews/DesignTokensPreview"
 
 interface PageProgress {
   name: string
@@ -21,20 +26,40 @@ interface WorkflowStep {
   optional?: boolean
 }
 
+interface GSDStatus {
+  enabled: boolean
+  projectExists: boolean
+  roadmapExists: boolean
+  stateExists: boolean
+}
+
+interface ProjectInfo {
+  name: string
+  type: string
+  pagesCount: number
+}
+
 interface WorkflowState {
   currentStep: number
   steps: WorkflowStep[]
+  gsd?: GSDStatus
+  project?: ProjectInfo | null
 }
 
 export default function Dashboard() {
   const [workflow, setWorkflow] = useState<WorkflowState | null>(null)
   const [loading, setLoading] = useState(true)
+  const [selectedStep, setSelectedStep] = useState<number | null>(null)
 
   const loadWorkflow = async () => {
     try {
       const res = await fetch("/api/workflow")
       const data = await res.json()
       setWorkflow(data)
+      // Auto-select current step if nothing selected
+      if (data && selectedStep === null) {
+        setSelectedStep(data.currentStep)
+      }
     } catch (error) {
       console.error("Failed to load workflow:", error)
     } finally {
@@ -44,290 +69,116 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadWorkflow()
-    const interval = setInterval(loadWorkflow, 2000)
+    const interval = setInterval(loadWorkflow, 3000)
     return () => clearInterval(interval)
   }, [])
 
+  // Update selected step when current step changes
+  useEffect(() => {
+    if (workflow && workflow.currentStep !== selectedStep) {
+      setSelectedStep(workflow.currentStep)
+    }
+  }, [workflow?.currentStep])
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <RefreshCw className="w-8 h-8 animate-spin text-muted-foreground" />
+      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+        <div className="flex flex-col items-center gap-4">
+          <RefreshCw className="w-8 h-8 animate-spin text-zinc-500" />
+          <span className="text-zinc-500 text-sm">Dashboard laden...</span>
+        </div>
       </div>
     )
   }
 
   if (!workflow) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">WebDesign-OS</h1>
-          <p className="text-muted-foreground">
-            Workflow nicht gefunden. Führe <code className="bg-muted px-2 py-1 rounded">/init-project</code> aus.
+      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+        <div className="text-center max-w-md">
+          <h1 className="text-2xl font-bold text-white mb-4">WebDesign-OS</h1>
+          <p className="text-zinc-400 mb-6">
+            Workflow nicht gefunden. Starte mit dem ersten Schritt:
+          </p>
+          <code className="bg-zinc-800 text-blue-400 px-4 py-2 rounded-lg font-mono text-sm">
+            /init-project
+          </code>
+          <p className="text-zinc-600 text-sm mt-4">
+            Oder nutze <code className="text-zinc-500">/gsd:new-project</code> für tiefere Projekt-Analyse
           </p>
         </div>
       </div>
     )
   }
 
+  const currentStepData = workflow.steps.find(s => s.id === selectedStep) || workflow.steps[0]
+  const gsd = workflow.gsd || { enabled: false, projectExists: false, roadmapExists: false, stateExists: false }
+
   return (
-    <main className="min-h-screen p-8">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-zinc-950 flex">
+      {/* Sidebar */}
+      <Sidebar
+        steps={workflow.steps}
+        currentStep={workflow.currentStep}
+        gsd={gsd}
+        onStepClick={setSelectedStep}
+        selectedStep={selectedStep || workflow.currentStep}
+      />
+
+      {/* Main Content */}
+      <main className="flex-1 ml-64 p-8">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold mb-2">WebDesign-OS</h1>
-          <p className="text-muted-foreground">Workflow Dashboard</p>
+        <header className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-white">
+              {workflow.project?.name || "WebDesign-OS"}
+            </h1>
+            <p className="text-zinc-500 text-sm mt-1">
+              {workflow.project?.type || "Website"} Projekt
+              {workflow.project?.pagesCount ? ` - ${workflow.project.pagesCount} Seiten` : ""}
+            </p>
+          </div>
+          <button className="p-2 rounded-lg bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors">
+            <Settings className="w-5 h-5" />
+          </button>
+        </header>
+
+        {/* Step Detail */}
+        <div className="mb-8">
+          <StepDetail
+            step={currentStepData}
+            isActive={workflow.currentStep === currentStepData.id}
+          />
         </div>
 
-        {/* Workflow Steps */}
-        <div className="space-y-4">
-          {workflow.steps.map((step, index) => (
-            <WorkflowStepCard
-              key={step.id}
-              step={step}
-              isActive={workflow.currentStep === step.id}
-              isLast={index === workflow.steps.length - 1}
-            />
-          ))}
+        {/* Guidance Panel */}
+        <div className="mb-8">
+          <GuidancePanel stepId={currentStepData.id} status={currentStepData.status} />
+        </div>
+
+        {/* Preview Panels */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Show Inspirations Preview for steps 1-4 */}
+          {currentStepData.id <= 4 && (
+            <InspirationsPreview />
+          )}
+
+          {/* Show Design Tokens Preview for steps 3-9 */}
+          {currentStepData.id >= 3 && (
+            <DesignTokensPreview />
+          )}
         </div>
 
         {/* Footer */}
-        <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>Führe die Commands in Claude Code CLI aus</p>
-          <p className="mt-1">Dashboard aktualisiert automatisch</p>
-        </div>
-      </div>
-    </main>
-  )
-}
-
-function WorkflowStepCard({
-  step,
-  isActive,
-  isLast,
-}: {
-  step: WorkflowStep
-  isActive: boolean
-  isLast: boolean
-}) {
-  const [expanded, setExpanded] = useState(isActive)
-  const hasPages = step.pages && step.pages.length > 0
-
-  const getStatusIcon = () => {
-    switch (step.status) {
-      case "completed":
-        return <Check className="w-5 h-5 text-success" />
-      case "in_progress":
-        return <RefreshCw className="w-5 h-5 text-primary animate-spin" />
-      case "locked":
-        return <Circle className="w-5 h-5 text-muted-foreground opacity-50" />
-      default:
-        return <Circle className="w-5 h-5 text-muted-foreground" />
-    }
-  }
-
-  const getStatusBorder = () => {
-    if (step.status === "completed") return "border-success/50"
-    if (isActive) return "border-primary"
-    return "border-border"
-  }
-
-  const getPageProgress = () => {
-    if (!step.pages || step.pages.length === 0) return null
-    const completed = step.pages.filter(p => p.status === "completed").length
-    const total = step.pages.length
-    return { completed, total, percentage: Math.round((completed / total) * 100) }
-  }
-
-  const pageProgress = getPageProgress()
-
-  return (
-    <div className="relative">
-      {/* Connector Line */}
-      {!isLast && (
-        <div
-          className={`absolute left-6 top-14 w-0.5 h-8 ${
-            step.status === "completed" ? "bg-success/50" : "bg-border"
-          }`}
-        />
-      )}
-
-      {/* Card */}
-      <div
-        className={`border rounded-xl p-4 transition-all ${getStatusBorder()} ${
-          step.status === "locked" ? "opacity-50" : ""
-        }`}
-      >
-        <div className="flex items-start gap-4">
-          {/* Status Icon */}
-          <div className="mt-1">{getStatusIcon()}</div>
-
-          {/* Content */}
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-1">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold">
-                  Step {step.id}: {step.name}
-                </h3>
-                {step.optional && (
-                  <span className="text-xs bg-muted px-2 py-0.5 rounded text-muted-foreground">
-                    Optional
-                  </span>
-                )}
-              </div>
-              <div className="flex items-center gap-2">
-                {step.status === "completed" && (
-                  <button className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Pencil className="w-4 h-4" />
-                  </button>
-                )}
-                {hasPages && step.status !== "locked" && (
-                  <button
-                    onClick={() => setExpanded(!expanded)}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Page Progress Bar */}
-            {pageProgress && step.status !== "locked" && (
-              <div className="mb-3">
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                  <span>{pageProgress.completed}/{pageProgress.total} Seiten</span>
-                  <span>{pageProgress.percentage}%</span>
-                </div>
-                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary transition-all duration-500"
-                    style={{ width: `${pageProgress.percentage}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {step.status === "completed" && step.summary ? (
-              <p className="text-sm text-muted-foreground">{step.summary}</p>
-            ) : step.status !== "locked" ? (
-              <div className="flex items-center gap-2 mt-2">
-                <CopyableCommand command={step.command} />
-                <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  In CLI ausführen
-                </span>
-              </div>
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                Vorheriger Schritt muss abgeschlossen werden
-              </p>
-            )}
-
-            {/* Expanded Pages List */}
-            {expanded && hasPages && step.status !== "locked" && (
-              <div className="mt-4 space-y-2 border-t pt-4">
-                {step.pages!.map((page, index) => (
-                  <PageProgressItem key={index} page={page} stepCommand={step.command} />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CopyableCommand({
-  command,
-  size = "default"
-}: {
-  command: string
-  size?: "default" | "sm"
-}) {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(command)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error("Failed to copy:", err)
-    }
-  }
-
-  const isSmall = size === "sm"
-
-  return (
-    <div className="flex items-center gap-2">
-      <code className={`bg-muted px-2 py-1 rounded font-mono ${isSmall ? "text-xs" : "text-sm"}`}>
-        {command}
-      </code>
-      <button
-        onClick={handleCopy}
-        className={`text-muted-foreground hover:text-foreground transition-colors ${isSmall ? "p-1" : "p-1.5"}`}
-        title="Command kopieren"
-      >
-        {copied ? (
-          <CheckCheck className={`text-success ${isSmall ? "w-3 h-3" : "w-4 h-4"}`} />
-        ) : (
-          <Copy className={isSmall ? "w-3 h-3" : "w-4 h-4"} />
-        )}
-      </button>
-    </div>
-  )
-}
-
-function PageProgressItem({
-  page,
-  stepCommand
-}: {
-  page: PageProgress
-  stepCommand: string
-}) {
-  const getPageStatusIcon = () => {
-    switch (page.status) {
-      case "completed":
-        return <Check className="w-4 h-4 text-success" />
-      case "in_progress":
-        return <RefreshCw className="w-4 h-4 text-primary animate-spin" />
-      default:
-        return <Circle className="w-4 h-4 text-muted-foreground" />
-    }
-  }
-
-  const getPageStatusClass = () => {
-    switch (page.status) {
-      case "completed":
-        return "bg-success/10 border-success/30"
-      case "in_progress":
-        return "bg-primary/10 border-primary/30"
-      default:
-        return "bg-muted/50 border-border"
-    }
-  }
-
-  return (
-    <div className={`flex items-center gap-3 p-2 rounded-lg border ${getPageStatusClass()}`}>
-      {getPageStatusIcon()}
-      <div className="flex-1">
-        <div className="flex items-center gap-2">
-          <FileText className="w-3 h-3 text-muted-foreground" />
-          <span className="font-medium text-sm capitalize">{page.name}</span>
-          {page.sections !== undefined && page.sections > 0 && (
-            <span className="text-xs text-muted-foreground">
-              {page.sections} Sections
+        <footer className="mt-12 pt-6 border-t border-zinc-800">
+          <div className="flex items-center justify-between text-xs text-zinc-600">
+            <span>Dashboard aktualisiert automatisch alle 3 Sekunden</span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Verbunden
             </span>
-          )}
-        </div>
-        {page.details && (
-          <p className="text-xs text-muted-foreground mt-0.5">{page.details}</p>
-        )}
-      </div>
-      {page.status === "pending" && (
-        <CopyableCommand command={`${stepCommand} ${page.name}`} size="sm" />
-      )}
+          </div>
+        </footer>
+      </main>
     </div>
   )
 }
